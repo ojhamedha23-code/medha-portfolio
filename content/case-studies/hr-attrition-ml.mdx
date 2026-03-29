@@ -1,0 +1,56 @@
+---
+title: "HR Attrition Prediction"
+summary: "ML pipeline to predict employee attrition on the IBM HR dataset — AUC 0.86, with an estimated $8–12M in potential annual HR cost savings."
+date: "2026-03-01"
+tags: ["machine learning", "Python", "INSEAD"]
+---
+
+## The problem
+
+Most companies only find out an employee is leaving when they hand in their resignation — at which point it's too late. Recruitment, onboarding, and lost productivity cost 1.5–2× an employee's annual salary per departure.
+
+The question: can we predict who's at risk *before* they decide to leave?
+
+## The dataset
+
+IBM HR Analytics Employee Attrition & Performance dataset: ~1,470 employees with 35 features including job role, salary, overtime, satisfaction scores, tenure, and promotion history.
+
+## Approach
+
+Two ML approaches were built and compared:
+
+### Approach 1 — LightGBM + SHAP (AUC 0.86)
+
+Instead of using raw features, I engineered **behavioural proxies** — indicators of psychological and economic stress that standard HR snapshots miss:
+
+- **Burnout Index** — overtime combined with job satisfaction. An employee working overtime who loves their job is fine. One who doesn't isn't.
+- **Career Plateau Score** — years in current role vs. total tenure. Identifies people who feel stuck.
+- **Relative Pay Gap** — salary vs. peers at the same job level. Absolute pay matters less than relative deprivation.
+- **Promotion Stagnation** — time since last promotion relative to tenure.
+
+Used ADASYN oversampling to handle class imbalance (attrition is rare), and SHAP values for interpretability.
+
+### Approach 2 — Logistic Regression (validated on hold-out)
+
+A more production-ready model with a conservative threshold of 0.3 to minimise false negatives (missing at-risk employees is more costly than false alarms).
+
+Validated on a **hidden hold-out set of 294 employees** — AUC 0.79.
+
+## Results
+
+| Metric | Value |
+|---|---|
+| AUC-ROC (LightGBM) | 0.86 |
+| AUC-ROC (hold-out, 294 employees) | 0.79 |
+| Precision — Not leaving | 95% |
+| Recall — Not leaving | 90% |
+
+## Business impact
+
+At scale, identifying even a fraction of at-risk employees early enough for retention interventions (pay adjustments, role changes, manager conversations) translates to significant savings.
+
+**Estimated: $8–12M in potential annual HR cost savings** based on average salary and replacement cost assumptions.
+
+## Code
+
+Full notebook on GitHub →

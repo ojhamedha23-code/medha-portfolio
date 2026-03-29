@@ -29,6 +29,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   const { meta, content } = data!;
   const isRecruitmentTracker = params.slug === "recruitment-tracker";
+  const isAttritionML = params.slug === "hr-attrition-ml";
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
@@ -71,6 +72,18 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <p className="text-xs font-sans text-muted mt-2 text-center">
             Live preview — download to use it fully in your browser.
           </p>
+        </div>
+      )}
+
+      {/* GitHub button for ML project */}
+      {isAttritionML && (
+        <div className="flex flex-wrap gap-3 mb-12">
+          <Button
+            href="https://github.com/ojhamedha23-code/hr-attrition-prediction"
+            external
+          >
+            View on GitHub
+          </Button>
         </div>
       )}
 
