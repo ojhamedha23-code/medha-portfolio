@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hey Ravi! Happy Playing!</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1a1a2e;
+      color: #f4a261;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 16px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #e9c46a;
+      text-align: center;
+      letter-spacing: 1px;
+      text-shadow: 0 0 20px #f4a26188;
+    }
+
+    #scoreboard {
+      display: flex;
+      gap: 3rem;
+      font-size: 1.1rem;
+      color: #e9c46a;
+    }
+
+    #scoreboard span { font-weight: bold; font-size: 1.4rem; color: #f4a261; }
+
+    #message-box {
+      height: 1.8rem;
+      font-size: 1.1rem;
+      color: #e9c46a;
+      font-weight: bold;
+      transition: opacity 0.5s;
+      text-align: center;
+    }
+
+    #wrapper {
+      position: relative;
+    }
+
+    canvas {
+      display: block;
+      border: 3px solid #f4a261;
+      border-radius: 8px;
+      box-shadow: 0 0 30px #f4a26144;
+    }
+
+    #overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 30, 0.88);
+      border-radius: 8px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    #overlay.show { display: flex; }
+
+    #overlay h2 {
+      font-size: 1.6rem;
+      color: #e9c46a;
+      line-height: 1.5;
+      padding: 0 20px;
+    }
+
+    #restart-btn {
+      padding: 0.7rem 2.5rem;
+      font-size: 1.1rem;
+      border: 2px solid #f4a261;
+      border-radius: 8px;
+      background: transparent;
+      color: #f4a261;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    #restart-btn:hover {
+      background: #f4a261;
+      color: #1a1a2e;
+    }
+
+    #hint {
+      font-size: 0.85rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hey Ravi! Happy Playing! 🏈</h1>
+
+  <div id="scoreboard">
+    Score: <span id="score-val">0</span>
+    &nbsp;&nbsp;&nbsp;
+    Best: <span id="best-val">0</span>
+  </div>
+
+  <div id="message-box">&nbsp;</div>
+
+  <div id="wrapper">
+    <canvas id="game" width="600" height="600"></canvas>
+    <div id="overlay">
+      <h2 id="over-text"></h2>
+      <button id="restart-btn">Play Again</button>
+    </div>
+  </div>
+
+  <div id="hint">Arrow keys to move</div>
+
+  <script>
+    const COLS = 20, ROWS = 20;
+    const CELL = 30; // 600 / 20
+    const BASE_INTERVAL = 150;
+    const MIN_INTERVAL = 60;
+
+    const FOODS = [
+      { emoji: '🍛', msg: "Biriyani! Ravi's fav!" },
+      { emoji: '☕', msg: "Filter Coffee! Ahhh!" },
+      { emoji: '🍲', msg: "Cooking Pot! Homemade!" },
+      { emoji: '🛍️', msg: "Grocery Run! Smart!" },
+      { emoji: '👟', msg: "Walking Shoe! Keep moving!" },
+      { emoji: '🏈', msg: "Football! GOALL!" },
+    ];
+
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const overlay = document.getElementById('overlay');
+    const overText = document.getElementById('over-text');
+    const scoreVal = document.getElementById('score-val');
+    const bestVal = document.getElementById('best-val');
+    const msgBox = document.getElementById('message-box');
+
+    let snake, dir, nextDir, food, score, best, running, loopId, msgTimer;
+
+    function init() {
+      snake = [
+        { x: 10, y: 10 },
+        { x: 9,  y: 10 },
+        { x: 8,  y: 10 },
+      ];
+      dir = { x: 1, y: 0 };
+      nextDir = { x: 1, y: 0 };
+      score = 0;
+      running = true;
+      overlay.classList.remove('show');
+      updateScore();
+      spawnFood();
+      clearInterval(loopId);
+      loopId = setInterval(tick, BASE_INTERVAL);
+    }
+
+    function spawnFood() {
+      let pos;
+      do {
+        pos = { x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS) };
+      } while (snake.some(s => s.x === pos.x && s.y === pos.y));
+      const item = FOODS[Math.floor(Math.random() * FOODS.length)];
+      food = { ...pos, ...item };
+    }
+
+    function tick() {
+      dir = nextDir;
+      const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+
+      // Wall collision
+      if (head.x < 0 || head.x >= COLS || head.y < 0 || head.y >= ROWS) {
+        return gameOver();
+      }
+      // Self collision
+      if (snake.some(s => s.x === head.x && s.y === head.y)) {
+        return gameOver();
+      }
+
+      snake.unshift(head);
+
+      if (head.x === food.x && head.y === food.y) {
+        score += 10;
+        updateScore();
+        showMessage(food.msg + ' +10');
+        spawnFood();
+        adjustSpeed();
+      } else {
+        snake.pop();
+      }
+
+      draw();
+    }
+
+    function adjustSpeed() {
+      const speedups = Math.floor(score / 50);
+      const interval = Math.max(MIN_INTERVAL, BASE_INTERVAL - speedups * 5);
+      clearInterval(loopId);
+      loopId = setInterval(tick, interval);
+    }
+
+    function updateScore() {
+      scoreVal.textContent = score;
+      if (score > (best || 0)) {
+        best = score;
+        bestVal.textContent = best;
+      }
+    }
+
+    function showMessage(text) {
+      clearTimeout(msgTimer);
+      msgBox.style.opacity = '1';
+      msgBox.textContent = text;
+      msgTimer = setTimeout(() => { msgBox.style.opacity = '0'; }, 1800);
+    }
+
+    function gameOver() {
+      running = false;
+      clearInterval(loopId);
+      draw(); // final frame
+      overText.textContent = `Ravi, you scored ${score} points!\nLove you ❤️`;
+      overText.style.whiteSpace = 'pre-line';
+      overlay.classList.add('show');
+    }
+
+    function draw() {
+      // Background
+      ctx.fillStyle = '#1a1a2e';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Grid lines (subtle)
+      ctx.strokeStyle = '#ffffff08';
+      ctx.lineWidth = 0.5;
+      for (let x = 0; x <= COLS; x++) {
+        ctx.beginPath();
+        ctx.moveTo(x * CELL, 0);
+        ctx.lineTo(x * CELL, canvas.height);
+        ctx.stroke();
+      }
+      for (let y = 0; y <= ROWS; y++) {
+        ctx.beginPath();
+        ctx.moveTo(0, y * CELL);
+        ctx.lineTo(canvas.width, y * CELL);
+        ctx.stroke();
+      }
+
+      // Snake body
+      snake.forEach((seg, i) => {
+        if (i === 0) return; // head drawn separately
+        const alpha = 1 - (i / snake.length) * 0.5;
+        ctx.fillStyle = `rgba(244, 162, 97, ${alpha})`;
+        ctx.beginPath();
+        ctx.roundRect(seg.x * CELL + 2, seg.y * CELL + 2, CELL - 4, CELL - 4, 6);
+        ctx.fill();
+      });
+
+      // Snake head (football emoji)
+      ctx.font = `${CELL - 2}px serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('🏈', snake[0].x * CELL + CELL / 2, snake[0].y * CELL + CELL / 2);
+
+      // Food
+      ctx.font = `${CELL - 4}px serif`;
+      ctx.fillText(food.emoji, food.x * CELL + CELL / 2, food.y * CELL + CELL / 2);
+    }
+
+    // Controls
+    const KEY_MAP = {
+      ArrowUp:    { x: 0, y: -1 },
+      ArrowDown:  { x: 0, y:  1 },
+      ArrowLeft:  { x: -1, y: 0 },
+      ArrowRight: { x:  1, y: 0 },
+    };
+
+    document.addEventListener('keydown', e => {
+      const d = KEY_MAP[e.key];
+      if (!d) return;
+      e.preventDefault();
+      // Prevent reversing
+      if (d.x === -dir.x && d.y === -dir.y) return;
+      nextDir = d;
+    });
+
+    document.getElementById('restart-btn').addEventListener('click', init);
+
+    init();
+    draw();
+  </script>
+</body>
+</html>
