@@ -5,21 +5,21 @@ export const metadata = {
 const links = [
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/medhaojha",
-    desc: "Connect professionally",
-    external: true,
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/ojhamedha23-code",
-    desc: "See my code",
+    href: "https://www.linkedin.com/in/medhaojha/",
+    desc: "linkedin.com/in/medhaojha",
     external: true,
   },
   {
     label: "Email",
-    href: "mailto:hello@medhaojha.com",
-    desc: "hello@medhaojha.com",
+    href: "mailto:medha.ojha@insead.edu",
+    desc: "medha.ojha@insead.edu",
     external: false,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/ojhamedha23-code",
+    desc: "ojhamedha23-code",
+    external: true,
   },
 ];
 

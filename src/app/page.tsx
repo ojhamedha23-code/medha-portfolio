@@ -38,8 +38,8 @@ export default function Home() {
           <div>
             <h2 className="font-serif text-2xl text-ink mb-2">About me</h2>
             <p className="font-sans text-muted max-w-md leading-relaxed">
-              MBA student, builder, and product enthusiast. I care about making
-              things that actually solve problems.
+              Strategy & product professional with 7+ years across AI startups,
+              finance and social impact. Currently MBA at INSEAD.
             </p>
           </div>
           <Link
