@@ -1,4 +1,4 @@
-import { getCaseStudyBySlug, getAllCaseStudies } from "@/lib/case-studies";
+import { getCaseStudyBySlug, getAllCaseStudySlugs } from "@/lib/case-studies";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Button from "@/components/ui/Button";
 import Tag from "@/components/ui/Tag";
@@ -9,14 +9,16 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const studies = getAllCaseStudies();
-  return studies.map((s) => ({ slug: s.slug }));
+  return getAllCaseStudySlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const studies = getAllCaseStudies();
-  const study = studies.find((s) => s.slug === params.slug);
-  return { title: study ? `${study.title} — Medha Ojha` : "Case Study" };
+  try {
+    const { meta } = getCaseStudyBySlug(params.slug);
+    return { title: `${meta.title} — Medha Ojha` };
+  } catch {
+    return { title: "Case Study — Medha Ojha" };
+  }
 }
 
 export default async function CaseStudyPage({ params }: PageProps) {
@@ -30,11 +32,24 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const { meta, content } = data!;
   const isRecruitmentTracker = params.slug === "recruitment-tracker";
   const isAttritionML = params.slug === "hr-attrition-ml";
+  const isConsulting = meta.showInListing === true || meta.showInListing === undefined && !isRecruitmentTracker && !isAttritionML;
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
+      {/* Back link for consulting case studies */}
+      {isConsulting && (
+        <a href="/case-studies" className="inline-flex items-center gap-1 text-sm font-sans text-muted hover:text-burgundy transition-colors mb-8">
+          ← Case Studies
+        </a>
+      )}
+
       {/* Header */}
       <div className="mb-10">
+        {meta.context && (
+          <p className="font-sans text-xs text-muted uppercase tracking-widest mb-3">
+            {meta.context}
+          </p>
+        )}
         <h1 className="font-serif text-4xl text-ink mb-4">{meta.title}</h1>
         <p className="font-sans text-lg text-muted leading-relaxed max-w-2xl mb-6">
           {meta.summary}

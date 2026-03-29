@@ -13,8 +13,8 @@ export default function CaseStudiesPage() {
       <div className="mb-12">
         <h1 className="font-serif text-4xl text-ink mb-4">Case Studies</h1>
         <p className="font-sans text-muted text-lg leading-relaxed max-w-xl">
-          Deep dives into products I&apos;ve built — the problem, the thinking,
-          and how it came together.
+          Strategy and consulting work — industry analyses, market entry
+          frameworks, and the thinking behind the recommendations.
         </p>
       </div>
 

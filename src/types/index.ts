@@ -26,4 +26,7 @@ export interface CaseStudyMeta {
   summary: string;
   date: string;
   tags: string[];
+  showInListing?: boolean;
+  previewImage?: string;
+  context?: string;
 }
