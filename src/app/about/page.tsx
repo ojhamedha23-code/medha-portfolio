@@ -9,29 +9,27 @@ export default function AboutPage() {
   return (
     <>
       {/* ── Hero band ────────────────────────────────────── */}
-      <div className="bg-ink text-paper">
-        <div className="max-w-5xl mx-auto px-6 py-16 flex flex-col sm:flex-row gap-12 items-center">
-          {/* Sketch */}
-          <div className="flex-shrink-0 w-[140px] sm:w-[170px]">
-            <SketchIllustration className="w-full h-auto [&_ellipse]:fill-[#2A1F1B] [&_path[fill='#FDF6F0']]:fill-[#3A2E28] [&_circle[fill='#FDF6F0']]:fill-[#3A2E28] [&_path[fill='white']]:fill-[#1E1E1E] [&_path[fill='#F5EDE6']]:fill-[#2A2420]" />
-          </div>
+      <div className="max-w-5xl mx-auto px-6 pt-16 pb-10 flex flex-col sm:flex-row gap-12 items-center">
+        {/* Sketch */}
+        <div className="flex-shrink-0 w-[140px] sm:w-[180px]">
+          <SketchIllustration className="w-full h-auto" />
+        </div>
 
-          {/* Text */}
-          <div className="flex-1">
-            <h1 className="font-serif text-4xl text-paper tracking-tight mb-5">About me</h1>
-            <p className="font-sans text-lg text-paper/80 leading-relaxed mb-4 max-w-xl">
-              I&apos;ve spent my career building things at the edges — where
-              technology meets people, where strategy meets implementation, and
-              where emerging markets meet global capital.
-            </p>
-            <p className="font-sans text-base text-paper/60 leading-relaxed max-w-xl">
-              I started as an engineer, moved into social impact, then into
-              AI product management, and now strategy consulting. Each step
-              taught me something the others couldn&apos;t. At INSEAD,
-              I&apos;m pulling all of that together — and building things on
-              the side to stay sharp.
-            </p>
-          </div>
+        {/* Text */}
+        <div className="flex-1">
+          <h1 className="font-serif text-4xl text-ink tracking-tight mb-5">About me</h1>
+          <p className="font-sans text-lg text-ink/75 leading-relaxed mb-4 max-w-xl">
+            I&apos;ve spent my career building things at the edges — where
+            technology meets people, where strategy meets implementation, and
+            where emerging markets meet global capital.
+          </p>
+          <p className="font-sans text-base text-muted leading-relaxed max-w-xl">
+            I started as an engineer, moved into social impact, then into
+            AI product management, and now strategy consulting. Each step
+            taught me something the others couldn&apos;t. At INSEAD,
+            I&apos;m pulling all of that together — and building things on
+            the side to stay sharp.
+          </p>
         </div>
       </div>
 
