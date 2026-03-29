@@ -17,3 +17,49 @@
     text-wrap: balance;
   }
 }
+
+/* ── Prose table polish ────────────────────────────────────── */
+.prose table {
+  @apply w-full text-sm border-collapse my-6;
+}
+
+.prose thead tr {
+  @apply border-b-2 border-ink/20;
+}
+
+.prose thead th {
+  @apply text-left font-sans font-semibold text-ink py-2.5 px-4 text-xs uppercase tracking-wider;
+}
+
+.prose tbody tr {
+  @apply border-b border-muted/15 transition-colors;
+}
+
+.prose tbody tr:hover {
+  @apply bg-blush/40;
+}
+
+.prose tbody td {
+  @apply py-2.5 px-4 font-sans text-sm text-ink leading-relaxed;
+}
+
+.prose tbody tr:last-child {
+  @apply border-b-0;
+}
+
+/* ── Prose general refinements ────────────────────────────── */
+.prose h2 {
+  @apply mt-10 mb-4;
+}
+.prose h3 {
+  @apply mt-7 mb-3;
+}
+.prose p {
+  @apply leading-relaxed;
+}
+.prose hr {
+  @apply border-muted/20 my-10;
+}
+.prose blockquote {
+  @apply border-l-burgundy/60 text-muted not-italic;
+}

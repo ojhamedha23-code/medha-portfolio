@@ -9,7 +9,7 @@ const links = [
   { label: "Projects", href: "/projects" },
   { label: "Past Work", href: "/past-work" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Let's Connect", href: "/connect" },
+  { label: "Connect", href: "/connect" },
 ];
 
 export default function Nav() {
@@ -17,30 +17,33 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-muted/20">
-      <nav className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur-md border-b border-ink/8">
+      <nav className="max-w-5xl mx-auto px-6 py-0 flex items-center justify-between h-14">
         <Link
           href="/"
-          className="font-serif text-lg text-ink hover:text-burgundy transition-colors"
+          className="font-serif text-base tracking-tight text-ink hover:text-burgundy transition-colors"
         >
           Medha Ojha
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-6">
+        <ul className="hidden md:flex items-center gap-7">
           {links.map(({ label, href }) => {
-            const active = pathname === href;
+            const active = pathname === href || (href !== "/" && pathname.startsWith(href));
             return (
               <li key={href}>
                 <Link
                   href={href}
-                  className={`text-sm font-sans transition-colors ${
+                  className={`text-sm font-sans tracking-wide transition-colors ${
                     active
-                      ? "text-burgundy border-b border-burgundy pb-0.5"
+                      ? "text-ink font-medium"
                       : "text-muted hover:text-ink"
                   }`}
                 >
                   {label}
+                  {active && (
+                    <span className="block h-px bg-burgundy mt-0.5 rounded-full" />
+                  )}
                 </Link>
               </li>
             );
@@ -49,30 +52,15 @@ export default function Nav() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-ink"
+          className="md:hidden text-ink p-1"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {menuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
@@ -80,8 +68,8 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-muted/20 bg-paper px-6 py-4">
-          <ul className="flex flex-col gap-4">
+        <div className="md:hidden border-t border-ink/8 bg-paper px-6 py-5">
+          <ul className="flex flex-col gap-5">
             {links.map(({ label, href }) => {
               const active = pathname === href;
               return (
@@ -90,7 +78,7 @@ export default function Nav() {
                     href={href}
                     onClick={() => setMenuOpen(false)}
                     className={`text-sm font-sans transition-colors ${
-                      active ? "text-burgundy font-medium" : "text-muted hover:text-ink"
+                      active ? "text-ink font-medium" : "text-muted"
                     }`}
                   >
                     {label}

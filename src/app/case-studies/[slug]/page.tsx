@@ -1,5 +1,6 @@
 import { getCaseStudyBySlug, getAllCaseStudySlugs } from "@/lib/case-studies";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import Button from "@/components/ui/Button";
 import Tag from "@/components/ui/Tag";
 import { notFound } from "next/navigation";
@@ -61,7 +62,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* Download button */}
+      {/* Download + Preview buttons */}
       {isRecruitmentTracker && (
         <div className="flex flex-wrap gap-3 mb-12">
           <Button
@@ -69,6 +70,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
             download="RecruitmentTracker_MedhaOjha.html"
           >
             Download Tracker
+          </Button>
+          <Button
+            href="/recruitment-tracker.html"
+            variant="outline"
+            external
+          >
+            Preview Dashboard ↗
           </Button>
         </div>
       )}
@@ -103,8 +111,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
       )}
 
       {/* MDX content */}
-      <div className="border-t border-muted/20 pt-10 prose prose-neutral max-w-none font-sans prose-headings:font-serif prose-a:text-burgundy prose-a:no-underline hover:prose-a:underline">
-        <MDXRemote source={content} />
+      <div className="border-t border-ink/10 pt-10 prose prose-neutral max-w-none font-sans prose-headings:font-serif prose-a:text-burgundy prose-a:no-underline hover:prose-a:underline">
+        <MDXRemote source={content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
       </div>
     </div>
   );

@@ -9,8 +9,9 @@ export const projects: Project[] = [
     tags: ["productivity", "tool", "design"],
     status: "download",
     downloadFile: "/recruitment-tracker.html",
+    livePreviewUrl: "/recruitment-tracker.html",
     caseStudySlug: "recruitment-tracker",
-    previewImage: "/images/recruitment-tracker-thumb.png",
+    previewImage: "/images/recruitment-tracker-thumb.jpg",
     featured: true,
   },
   {
@@ -21,7 +22,8 @@ export const projects: Project[] = [
     tags: ["machine learning", "Python", "INSEAD"],
     status: "live",
     liveUrl: "https://github.com/ojhamedha23-code/hr-attrition-prediction",
-    previewImage: "/images/attrition-ml-thumb.png",
+    caseStudySlug: "hr-attrition-ml",
+    previewImage: "/images/attrition-ml-thumb.jpg",
     featured: true,
   },
 ];

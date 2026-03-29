@@ -5,6 +5,7 @@ export interface Project {
   tags: string[];
   status: "live" | "download";
   liveUrl?: string;
+  livePreviewUrl?: string;
   downloadFile?: string;
   caseStudySlug?: string;
   previewImage?: string;

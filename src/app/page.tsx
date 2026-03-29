@@ -10,41 +10,39 @@ export default function Home() {
     <>
       <Hero />
 
-      <div className="max-w-4xl mx-auto px-6">
-        <hr className="border-muted/20" />
+      {/* Divider */}
+      <div className="max-w-5xl mx-auto px-6">
+        <hr className="border-ink/10" />
       </div>
 
       {/* Featured projects */}
-      <section className="max-w-4xl mx-auto px-6 py-16">
-        <div className="flex items-center justify-between mb-8">
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <div className="flex items-baseline justify-between mb-8">
           <h2 className="font-serif text-2xl text-ink">Featured Work</h2>
-          <Link
-            href="/projects"
-            className="text-sm font-sans text-burgundy hover:underline"
-          >
-            View all →
+          <Link href="/projects" className="text-xs font-sans text-muted hover:text-ink transition-colors">
+            All projects →
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {featured.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </section>
 
-      {/* About teaser */}
-      <section className="bg-blush">
-        <div className="max-w-4xl mx-auto px-6 py-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      {/* About strip */}
+      <section className="border-y border-ink/8 bg-blush/60">
+        <div className="max-w-5xl mx-auto px-6 py-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
-            <h2 className="font-serif text-2xl text-ink mb-2">About me</h2>
-            <p className="font-sans text-muted max-w-md leading-relaxed">
-              Strategy & product professional with 7+ years across AI startups,
-              finance and social impact. Currently MBA at INSEAD.
+            <h2 className="font-serif text-xl text-ink mb-2">About me</h2>
+            <p className="font-sans text-sm text-muted max-w-sm leading-relaxed">
+              Strategy & product across AI, finance, and social impact.
+              Currently at INSEAD, Singapore.
             </p>
           </div>
           <Link
             href="/about"
-            className="text-sm font-sans font-medium text-burgundy hover:underline whitespace-nowrap"
+            className="text-sm font-sans font-medium text-ink hover:text-burgundy transition-colors whitespace-nowrap"
           >
             Read more →
           </Link>
