@@ -15,6 +15,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "vc-agent",
+    title: "VC Pitch Screening Agent",
+    description:
+      "Multi-agent AI pipeline that automates pitch deck screening for early-stage VCs. Built with Claude API, Tavily, and a two-pass PDF parser — produces structured investment memos with PASS/REVIEW/ARCHIVE decisions. INSEAD Gen AI capstone project.",
+    tags: ["Generative AI", "Multi-Agent", "Claude API", "Python"],
+    status: "live",
+    liveUrl: "https://github.com/ojhamedha23-code/vc-agent",
+    caseStudySlug: "vc-agent",
+    previewImage: "/images/vc-agent-thumb.jpg",
+    featured: true,
+  },
+  {
     id: "hr-attrition-ml",
     title: "HR Attrition Prediction",
     description:

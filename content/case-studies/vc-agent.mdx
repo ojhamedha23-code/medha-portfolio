@@ -1,0 +1,85 @@
+---
+title: "VC Pitch Screening Agent"
+subtitle: "Breaking the analysis bottleneck in early-stage venture capital"
+date: "2025-12-01"
+tags: ["Generative AI", "Multi-Agent", "Python", "Claude API", "INSEAD"]
+previewImage: "/images/vc-agent-thumb.jpg"
+showInListing: false
+context: "INSEAD MBA · Generative AI for Business · Group Project"
+---
+
+## The Problem
+
+Early-stage VCs review **2,500–5,000 pitch decks** to make just **5–10 investments**. That's a brutal funnel — and most of the filtering happens in minutes, by tired analysts working through a pile.
+
+The cost of getting it wrong goes both ways:
+
+- **False negatives** — great startups buried in the pile. Missed unicorns that define fund returns.
+- **False positives** — "vibe-heavy" decisions that drain time and capital on weak fundamentals.
+
+Solo GPs and emerging fund managers feel this most acutely. They're running lean teams with deal flow that rivals much larger funds, and every hour spent screening a bad deck is an hour not spent with a founder who deserves attention.
+
+## What We Built
+
+A **multi-agent AI pipeline** that automates the initial pitch deck screening workflow — from raw PDF upload to a structured investment memo with a PASS / REVIEW / ARCHIVE decision.
+
+The system handles the full workflow that currently takes analysts 1–3 days, and produces a consistent, thesis-aligned output every time.
+
+### Agent Architecture
+
+The pipeline uses four agents running in a coordinated sequence:
+
+| Agent | Role |
+|-------|------|
+| Agent 1 — Parser | Extracts content from pitch decks (text + vision fallback) |
+| Agent 2 — Analyst | Evaluates thesis fit, team, market, and deal-breaker flags |
+| Agent 3 — Fact-Checker | Cross-references startup claims against trusted web sources |
+| Agent 4 — Memo Writer | Synthesises findings into a structured investment memo |
+
+Agents 2 and 3 run **in parallel** to minimise processing time. A post-processing decision engine then applies Agent 2's deal-breaker vetoes to Agent 3's output before the final memo is generated.
+
+### Technical Challenges Solved
+
+**Image-heavy PDFs** — Most pitch decks are design-tool exports, not text-native PDFs. We built a two-pass parser: first attempts `pdfplumber` extraction. If a slide returns fewer than 50 characters, it's flagged as image-based and routed to Claude's Vision API to read the slide visually.
+
+**Fact-check noise** — Open web search returns opinion-based, low-quality results that can incorrectly contradict legitimate startup claims. We domain-whitelisted Tavily to trusted sources only and introduced a 4-level verification status: `verified / contradicted / unverified / not_found`.
+
+**LLM non-determinism** — Claude uses probabilistic sampling by default, meaning the same deck uploaded twice could produce different scores. We set `temperature=0` across all agents and added file-hash deduplication — if the same PDF is uploaded again, the pipeline is skipped and the cached result returned instantly.
+
+**Parallel agent coordination** — Agent 3's REVIEW/PASS/ARCHIVE decision needed to be overridden by Agent 2's deal-breaker flags. We resolved this with a post-processing engine that applies the veto logic after both agents complete.
+
+## Target Market
+
+We designed the go-to-market around the **highest-pain, fastest-adoption** segments first:
+
+1. **Emerging fund managers & solo GPs** — Small teams, high deal flow, most acutely feel the bandwidth problem. Primary target.
+2. **Mid-sized funds ($50M–$500M AUM)** — Use as a triage supplement before human review.
+3. **Accelerators & incubators** — Y Combinator, Antler, 500 Global review hundreds of applications per cohort. Same bottleneck, different context.
+4. **Corporate venture arms** — Process-driven and open to tooling (e.g. Singtel Innov8).
+
+## Competitive Positioning
+
+Two categories of competition — neither solves the full workflow:
+
+**Direct AI-native competitors** (Hebbia, Harmonic, DeckMatch) — Powerful analysis but not purpose-built for end-to-end VC screening.
+
+**Data giants adding AI features** (PitchBook, Affinity) — Rich data and distribution, but AI features are shallow additions to prevent platform leakage, not native to the decision workflow.
+
+Our gap: the only tool built **exclusively for AI-native screening end-to-end** — from raw deck to investment memo.
+
+## Impact
+
+| Stage | Before | After |
+|-------|--------|-------|
+| Initial Screening | Manual, inconsistent, high volume | Automated, thesis-aligned, consistent |
+| First Meetings | Low context, noise-heavy | Higher quality, better prepared |
+| Internal Diligence | Analysts spread thin | Time focused on the right deals |
+| Partnership Meeting | Variable conviction | Higher conviction, better use of partner time |
+
+## What's Next
+
+- **Deeper thesis learning** — Model learns from past memos and investment decisions to capture implicit preferences
+- **Multi-user collaboration** — Role-based access (Partner / Associate / Analyst), deal annotations, @mention teammates
+- **VDR integration for DD** — Expand from pitch deck to full data room documents (financials, cap table, GTM contracts)
+- **CRM-style deal pipeline** — Track deals across stages with personalised founder outreach
+- **Proactive deal sourcing** — Flag thesis-matching companies before they formally raise, via LinkedIn hiring signals and Crunchbase tracking
