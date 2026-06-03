@@ -28,9 +28,9 @@ export const projects: Project[] = [
   },
   {
     id: "blackbuck-voice-agent",
-    title: "BlackBuck Voice AI Agent",
+    title: "Building a Voice AI Agent on one of India's Frontier Voice Platforms",
     description:
-      "Outbound voice AI agent for India's largest trucking marketplace. Calls drivers in Hindi/Hinglish after delivery to offer matched return-leg loads — capturing booking decisions in under 3 minutes. Built on a no-code voice AI platform.",
+      "A case study in designing an outbound voice AI agent for a leading Indian logistics marketplace. Calls drivers in Hindi/Hinglish after delivery to offer matched return-leg loads — capturing booking decisions in under 3 minutes.",
     tags: ["Voice AI", "Logistics", "Product Design"],
     status: "live",
     liveUrl: "https://github.com/ojhamedha23-code/blackbuck-voice-agent-teardown",
