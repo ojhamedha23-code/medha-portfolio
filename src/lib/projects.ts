@@ -27,6 +27,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "blackbuck-voice-agent",
+    title: "BlackBuck Voice AI Agent",
+    description:
+      "Outbound voice AI agent for India's largest trucking marketplace. Calls drivers in Hindi/Hinglish after delivery to offer matched return-leg loads — capturing booking decisions in under 3 minutes. Built on a no-code voice AI platform.",
+    tags: ["Voice AI", "Logistics", "Product Design"],
+    status: "live",
+    liveUrl: "https://github.com/ojhamedha23-code/blackbuck-voice-agent-teardown",
+    caseStudySlug: "blackbuck-voice-agent",
+    previewImage: "/images/blackbuck-voice-thumb.jpg",
+    featured: false,
+  },
+  {
     id: "hr-attrition-ml",
     title: "HR Attrition Prediction",
     description:

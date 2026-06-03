@@ -1,0 +1,75 @@
+---
+title: "BlackBuck Voice AI Agent"
+subtitle: "Reducing empty-return-leg cost through outbound voice AI"
+date: "2026-01-01"
+tags: ["Voice AI", "Product Design", "Logistics", "Hindi/Hinglish", "No-Code AI"]
+previewImage: "/images/blackbuck-voice-thumb.jpg"
+showInListing: true
+context: "Personal Project · Voice AI · Product Teardown"
+---
+
+## The Problem
+
+India has roughly 35 lakh trucks on the road. An estimated **30–40% of truck kilometres are driven empty** — particularly on the return leg after a delivery drop-off. Every empty kilometre is dead cost for the driver and lost GMV for the marketplace.
+
+**BlackBuck Loads** is one of India's largest digital trucking marketplaces, with ₹172 Cr quarterly revenue (Oct–Dec 2025) and 9.6 lakh transacting truck operators as of FY24 — roughly 27.5% of all truckers in India.
+
+The gap: after a truck completes a delivery, it goes dark. The driver is tired, at an unfamiliar location, often without reliable internet, making a quick decision about where to head next. BlackBuck's matching engine may have a perfect return-leg load ready — but reaching the driver in time, in his language, on a channel he actually picks up is the hard part.
+
+## Why Voice AI Fits
+
+Drivers pick up calls. App engagement post-delivery is low — they're exhausted, moving, or at a dhaba. The primary audience is Hindi-speaking, and Hinglish is the natural register for commercial trucking conversations.
+
+The decision the agent needs to capture is also **bounded and clear**: book the load, counter-offer, or decline. It's not an open-ended support conversation — it's a structured commercial exchange with a specific outcome. That's exactly the kind of call voice AI handles well.
+
+At BlackBuck's scale (9.6L+ operators), a human calling center can't reach every driver after every drop. An AI agent can.
+
+## What I Built
+
+A voice AI agent named **Sonal** — a female voice that makes outbound calls to truck drivers after delivery drop-offs, presents a matched return-leg load, answers driver questions in Hindi/Hinglish, and captures the booking decision. Target call length: under three minutes.
+
+This was built entirely on a no-code voice AI platform. No traditional code was written. The work was in product design: defining the use case, architecting the agent's behavior, configuring the system prompt, iterating through 15+ test calls, and identifying platform gaps.
+
+### Agent Design Decisions
+
+**Persona and register.** Sonal addresses the driver as "aap" and "ji" — treating him as a business owner making a commercial decision, not a field operator receiving instructions. The tone is warm, calm, and direct. Hindi with Hinglish for commercial terms (load, rate, route, advance, confirm) matches how trucking professionals actually speak.
+
+**A single commercial lever.** The agent cannot negotiate the shipper's posted price. But it has one pre-authorized lever: a **25% advance on loading** (₹23,000 in the demo scenario). This can be offered once if the driver hesitates. The constraint is deliberate — the agent is a decision-capture system, not a negotiator. Any counter-offer is logged and relayed to a human dispatcher.
+
+**Bounded FAQ + escalation.** The agent answers up to three driver questions from a pre-defined FAQ. A fourth question triggers a polite escalation to a human dispatcher. This keeps calls short without leaving drivers without answers.
+
+**Hangup classifier.** A separate classifier covers eight closing conditions — confirmed booking, counter-offer logged, clean decline, callback scheduled, truck unavailable, wrong number, driver ends call, mid-call drop. This ensures the call ends cleanly across every branch, not just the happy path.
+
+**Variable system.** Dynamic inputs captured during the call — counter price, callback timing, decline reason — are stored as structured variables and relayed to BlackBuck's dispatch system. In production, the opening context (driver name, vehicle, route, rate) would be injected dynamically by BlackBuck's matching engine per call.
+
+### Demo Scenario
+
+The demo hardcodes a single scenario: driver Rajesh, vehicle BB-7821, Delhi→Chennai, 32 tonnes, ₹92,000. In production, these values populate dynamically per call.
+
+## Building It: Platform Journey
+
+**Model selection.** Switched from Azure to OpenAI GPT-4o after encountering silent-response bugs. Used Sarvam's ASR and TTS models for Hindi — tuning buffer size and speed settings for natural Hinglish output.
+
+**Multilingual configuration.** Set Hindi as the primary language in both agent and audio settings. Added a Devanagari script rule (Hindi in Devanagari, commercial English terms retained in Roman script) and a numeric expression rule (prices spoken in full — "ninety-two thousand rupees"; digit sequences spoken individually — "B B seven eight two one").
+
+**Iterative testing.** Made 15+ test calls on a busy road to simulate a real truck driver environment. Key issues fixed:
+
+- TTS truncating long Hindi sentences → shortened all agent lines by 40–50%
+- Agent not yielding to driver interruptions → calibrated interruption settings
+- Language switching on single English words → prompt refinement
+- Specific place names mispronounced by TTS → removed proper nouns, used region descriptions
+- Repeated call disconnections → identified telephony provider as the culprit via call log "Hangup By" column
+
+## 3 Platform Gaps I Found
+
+**Prompt versioning and simulation.** Over 15+ test calls, I made ~10–15 prompt refinements with no way to roll back or compare versions. At production scale, prompt iterations should be testable against synthetic scenarios before deploying — not discovered live.
+
+**Per-call token visibility.** I wrote a 5,800-word prompt with no feedback on context limits, per-call cost, or latency impact. Customers running large outbound campaigns need a live token counter and per-call input/output breakdown in the call log.
+
+**TTS and STT diagnostics.** I caught truncation issues only by listening to recordings manually. At scale, automated flags for TTS truncation, silence gaps, and low STT confidence should surface as filterable columns in the call log.
+
+## Evidence
+
+A voice recording of the agent in action — the full Delhi→Chennai load pitch, driver Q&A in Hindi/Hinglish, and booking confirmation — will be linked here shortly.
+
+The full technical teardown, including the agent design, demo scenario, and platform gap analysis, is available on [GitHub](https://github.com/ojhamedha23-code/blackbuck-voice-agent-teardown).
