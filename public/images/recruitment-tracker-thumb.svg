@@ -1,0 +1,69 @@
+<svg viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cream paper background -->
+  <rect width="400" height="240" fill="#FEF6EE"/>
+
+  <!-- Corner accent dots (top-right, matching hero) -->
+  <circle cx="375" cy="16" r="3.5" fill="#8B1A2B" opacity="0.75"/>
+  <circle cx="387" cy="28" r="2" fill="#8B1A2B" opacity="0.55"/>
+  <circle cx="368" cy="34" r="2.5" fill="#8B1A2B" opacity="0.6"/>
+  <line x1="378" y1="44" x2="392" y2="38" stroke="#8B1A2B" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+  <line x1="382" y1="57" x2="392" y2="53" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- App window frame -->
+  <rect x="22" y="26" width="340" height="198" rx="10" fill="white" stroke="#111111" stroke-width="2.2"/>
+
+  <!-- Window header bar -->
+  <path d="M 22 36 Q 22 26 32 26 L 352 26 Q 362 26 362 36 L 362 52 L 22 52 Z" fill="#F5EDE3" stroke="#111111" stroke-width="2.2"/>
+  <line x1="22" y1="52" x2="362" y2="52" stroke="#111111" stroke-width="2.2"/>
+
+  <!-- Traffic light circles -->
+  <circle cx="40" cy="39" r="4.5" fill="#E8A898" opacity="0.8"/>
+  <circle cx="56" cy="39" r="4.5" fill="#8B1A2B" opacity="0.3"/>
+  <circle cx="72" cy="39" r="4.5" fill="#111111" opacity="0.12"/>
+
+  <!-- Column header pills -->
+  <!-- Applied -->
+  <rect x="30" y="58" width="96" height="16" rx="3" fill="#F5EDE3"/>
+  <line x1="42" y1="66" x2="108" y2="66" stroke="#111111" stroke-width="1.5" opacity="0.42"/>
+  <!-- Interview -->
+  <rect x="142" y="58" width="96" height="16" rx="3" fill="#F5EDE3"/>
+  <line x1="154" y1="66" x2="222" y2="66" stroke="#111111" stroke-width="1.5" opacity="0.42"/>
+  <!-- Offer (burgundy) -->
+  <rect x="254" y="58" width="96" height="16" rx="3" fill="#FFF0E8" stroke="#8B1A2B" stroke-width="1.2"/>
+  <line x1="266" y1="66" x2="330" y2="66" stroke="#8B1A2B" stroke-width="1.5" opacity="0.62"/>
+
+  <!-- Column separator dashes -->
+  <line x1="133" y1="55" x2="133" y2="218" stroke="#111111" stroke-width="1" opacity="0.11" stroke-dasharray="5 3"/>
+  <line x1="245" y1="55" x2="245" y2="218" stroke="#111111" stroke-width="1" opacity="0.11" stroke-dasharray="5 3"/>
+
+  <!-- Column 1: Applied cards -->
+  <rect x="30" y="82" width="96" height="38" rx="5" fill="white" stroke="#111111" stroke-width="1.8"/>
+  <line x1="42" y1="94" x2="108" y2="94" stroke="#111111" stroke-width="1.2" opacity="0.38"/>
+  <line x1="42" y1="106" x2="86" y2="106" stroke="#111111" stroke-width="1" opacity="0.22"/>
+
+  <rect x="30" y="128" width="96" height="38" rx="5" fill="white" stroke="#111111" stroke-width="1.8"/>
+  <line x1="42" y1="140" x2="108" y2="140" stroke="#111111" stroke-width="1.2" opacity="0.38"/>
+  <line x1="42" y1="152" x2="78" y2="152" stroke="#111111" stroke-width="1" opacity="0.22"/>
+
+  <rect x="30" y="174" width="96" height="30" rx="5" fill="white" stroke="#111111" stroke-width="1.2" opacity="0.32"/>
+  <line x1="42" y1="186" x2="98" y2="186" stroke="#111111" stroke-width="1" opacity="0.16"/>
+
+  <!-- Column 2: Interview cards -->
+  <rect x="142" y="82" width="96" height="38" rx="5" fill="white" stroke="#111111" stroke-width="1.8"/>
+  <line x1="154" y1="94" x2="222" y2="94" stroke="#111111" stroke-width="1.2" opacity="0.38"/>
+  <line x1="154" y1="106" x2="198" y2="106" stroke="#111111" stroke-width="1" opacity="0.22"/>
+
+  <rect x="142" y="128" width="96" height="38" rx="5" fill="white" stroke="#111111" stroke-width="1.8"/>
+  <line x1="154" y1="140" x2="222" y2="140" stroke="#111111" stroke-width="1.2" opacity="0.38"/>
+  <line x1="154" y1="152" x2="194" y2="152" stroke="#111111" stroke-width="1" opacity="0.22"/>
+
+  <!-- Column 3: Offer cards (burgundy) -->
+  <rect x="254" y="82" width="96" height="38" rx="5" fill="white" stroke="#8B1A2B" stroke-width="1.8"/>
+  <!-- Checkmark -->
+  <path d="M 267 103 L 276 113 L 296 90" stroke="#8B1A2B" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="308" y1="90" x2="340" y2="90" stroke="#111111" stroke-width="1" opacity="0.28"/>
+  <line x1="308" y1="102" x2="332" y2="102" stroke="#111111" stroke-width="1" opacity="0.18"/>
+
+  <rect x="254" y="128" width="96" height="38" rx="5" fill="white" stroke="#8B1A2B" stroke-width="1.5"/>
+  <path d="M 267 149 L 276 159 L 296 136" stroke="#8B1A2B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

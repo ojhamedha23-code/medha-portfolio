@@ -11,7 +11,7 @@ export const projects: Project[] = [
     downloadFile: "/recruitment-tracker.html",
     livePreviewUrl: "/recruitment-tracker.html",
     caseStudySlug: "recruitment-tracker",
-    previewImage: "/images/recruitment-tracker-thumb.jpg",
+    previewImage: "/images/recruitment-tracker-thumb.svg",
     featured: true,
   },
   {
@@ -23,7 +23,7 @@ export const projects: Project[] = [
     status: "live",
     liveUrl: "https://github.com/ojhamedha23-code/vc-agent",
     caseStudySlug: "vc-agent",
-    previewImage: "/images/vc-agent-thumb.jpg",
+    previewImage: "/images/vc-agent-thumb.svg",
     featured: true,
   },
   {
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     status: "live",
     liveUrl: "https://github.com/ojhamedha23-code/blackbuck-voice-agent-teardown",
     caseStudySlug: "blackbuck-voice-agent",
-    previewImage: "/images/blackbuck-voice-thumb.jpg",
+    previewImage: "/images/blackbuck-voice-thumb.svg",
     featured: false,
   },
   {
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     status: "live",
     liveUrl: "https://github.com/ojhamedha23-code/hr-attrition-prediction",
     caseStudySlug: "hr-attrition-ml",
-    previewImage: "/images/attrition-ml-thumb.jpg",
+    previewImage: "/images/attrition-ml-thumb.svg",
     featured: true,
   },
 ];

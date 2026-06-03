@@ -20,6 +20,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
             src={study.previewImage}
             alt={study.title}
             fill
+            unoptimized={study.previewImage.endsWith(".svg")}
             className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
           />
         </div>

@@ -19,6 +19,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             src={project.previewImage}
             alt={project.title}
             fill
+            unoptimized={project.previewImage.endsWith(".svg")}
             className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
           />
         ) : (
