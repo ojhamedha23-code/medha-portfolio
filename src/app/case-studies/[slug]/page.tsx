@@ -110,6 +110,15 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </div>
       )}
 
+      {/* PDF download button */}
+      {meta.pdfUrl && (
+        <div className="flex flex-wrap gap-3 mb-12">
+          <Button href={meta.pdfUrl} download external>
+            Download Full Report (PDF)
+          </Button>
+        </div>
+      )}
+
       {/* MDX content */}
       <div className="border-t border-ink/10 pt-10 prose prose-neutral max-w-none font-sans prose-headings:font-serif prose-a:text-burgundy prose-a:no-underline hover:prose-a:underline">
         <MDXRemote source={content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />

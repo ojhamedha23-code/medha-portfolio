@@ -30,4 +30,5 @@ export interface CaseStudyMeta {
   showInListing?: boolean;
   previewImage?: string;
   context?: string;
+  pdfUrl?: string;
 }
