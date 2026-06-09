@@ -35,15 +35,20 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const isAttritionML = params.slug === "hr-attrition-ml";
   const isConsulting = !isRecruitmentTracker && !isAttritionML;
 
-  /* ── Recruitment Tracker — dashboard-first layout ────────────── */
+  /* ── Recruitment Tracker — snapshot + case study text ───────── */
   if (isRecruitmentTracker) {
     return (
-      <div className="max-w-5xl mx-auto px-6 py-10">
+      <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Header row: title left, single CTA right */}
         <div className="flex items-start justify-between gap-6 mb-8">
           <div>
-            <h1 className="font-serif text-3xl text-ink mb-2">{meta.title}</h1>
-            <p className="font-sans text-sm text-muted max-w-lg leading-relaxed">
+            {meta.context && (
+              <p className="font-sans text-xs text-muted uppercase tracking-widest mb-3">
+                {meta.context}
+              </p>
+            )}
+            <h1 className="font-serif text-4xl text-ink mb-3">{meta.title}</h1>
+            <p className="font-sans text-lg text-muted leading-relaxed max-w-2xl">
               {meta.summary}
             </p>
           </div>
@@ -51,19 +56,24 @@ export default async function CaseStudyPage({ params }: PageProps) {
             href="https://medha-job-dashboard.lovable.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 bg-burgundy text-paper text-sm font-sans font-medium rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap"
+            className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 bg-burgundy text-paper text-sm font-sans font-medium rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap mt-1"
           >
             Visit Live Dashboard ↗
           </a>
         </div>
 
-        {/* Full dashboard embed */}
-        <div className="border border-ink/10 rounded-2xl overflow-hidden shadow-card">
-          <iframe
-            src="https://medha-job-dashboard.lovable.app/"
-            className="w-full h-[82vh] min-h-[600px]"
-            title="Recruitment Tracker Dashboard"
+        {/* Dashboard snapshot */}
+        <div className="mb-12 border border-ink/10 rounded-2xl overflow-hidden shadow-card bg-blush">
+          <img
+            src="/images/recruitment-tracker-thumb.svg"
+            alt="Recruitment Tracker Dashboard"
+            className="w-full h-auto"
           />
+        </div>
+
+        {/* Case study text */}
+        <div className="border-t border-ink/10 pt-10 prose prose-neutral max-w-none font-sans prose-headings:font-serif prose-a:text-burgundy prose-a:no-underline hover:prose-a:underline">
+          <MDXRemote source={content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
         </div>
       </div>
     );
