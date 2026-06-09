@@ -1,0 +1,83 @@
+<svg viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" rx="10" fill="#FAFAF8" stroke="#111111" stroke-opacity="0.10" stroke-width="0.8"/>
+
+  <!-- Header -->
+  <rect width="800" height="60" rx="0" fill="#F7ECEE" fill-opacity="0.60"/>
+  <rect x="0" y="50" width="800" height="10" fill="#F7ECEE" fill-opacity="0.60"/>
+  <line x1="0" y1="60" x2="800" y2="60" stroke="#111111" stroke-opacity="0.07" stroke-width="0.8"/>
+  <text x="50" y="26" font-family="Georgia, serif" font-size="17" fill="#111111" opacity="0.88">Choose Agent Flow Type</text>
+  <text x="50" y="46" font-family="Georgia, serif" font-size="10" fill="#717580">Select how you want your voice agent to process conversations.</text>
+
+  <!-- LEFT CARD: Real-Time Flow — SELECTED -->
+  <rect x="48" y="82" width="320" height="390" rx="10" fill="white" stroke="#8B1A2B" stroke-opacity="0.45" stroke-width="1.5"/>
+  <!-- Selected highlight bg -->
+  <rect x="48" y="82" width="320" height="390" rx="10" fill="#8B1A2B" fill-opacity="0.03"/>
+
+  <!-- Icon area -->
+  <rect x="68" y="104" width="44" height="44" rx="22" fill="#F7ECEE"/>
+  <!-- Phone wave icon (simplified) -->
+  <path d="M 84 126 Q 84 118 90 118 Q 96 118 96 126" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M 79 126 Q 79 113 90 113 Q 101 113 101 126" stroke="#8B1A2B" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+  <text x="68" y="166" font-family="Georgia, serif" font-size="16" fill="#111111" opacity="0.88">Real-Time Flow</text>
+  <text x="68" y="184" font-family="Georgia, serif" font-size="9" fill="#717580">End-to-end real-time conversation</text>
+  <text x="68" y="196" font-family="Georgia, serif" font-size="9" fill="#717580">flow with a single LLM provider</text>
+
+  <!-- Features label -->
+  <text x="68" y="224" font-family="Georgia, serif" font-size="9.5" fill="#111111" opacity="0.65">Features:</text>
+
+  <!-- Feature bullets -->
+  <circle cx="74" cy="244" r="2.5" fill="#8B1A2B" opacity="0.70"/>
+  <text x="84" y="248" font-family="Georgia, serif" font-size="9.5" fill="#111111" opacity="0.75">Real-time transcription, processing</text>
+  <text x="84" y="262" font-family="Georgia, serif" font-size="9.5" fill="#111111" opacity="0.75">and response</text>
+
+  <circle cx="74" cy="280" r="2.5" fill="#8B1A2B" opacity="0.70"/>
+  <text x="84" y="284" font-family="Georgia, serif" font-size="9.5" fill="#111111" opacity="0.75">Single provider for simplicity</text>
+
+  <circle cx="74" cy="304" r="2.5" fill="#8B1A2B" opacity="0.70"/>
+  <text x="84" y="308" font-family="Georgia, serif" font-size="9.5" fill="#111111" opacity="0.75">Lower latency for natural</text>
+  <text x="84" y="322" font-family="Georgia, serif" font-size="9.5" fill="#111111" opacity="0.75">conversations</text>
+
+  <circle cx="74" cy="340" r="2.5" fill="#8B1A2B" opacity="0.70"/>
+  <text x="84" y="344" font-family="Georgia, serif" font-size="9.5" fill="#111111" opacity="0.75">Easier setup and deployment</text>
+
+  <!-- Select button (active/filled) -->
+  <rect x="68" y="420" width="280" height="36" rx="8" fill="#8B1A2B"/>
+  <text x="208" y="443" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="white" opacity="0.92">Select Real-Time Flow</text>
+
+  <!-- RIGHT CARD: Pipeline Flow — NOT SELECTED -->
+  <rect x="432" y="82" width="320" height="390" rx="10" fill="white" stroke="#111111" stroke-opacity="0.10" stroke-width="0.8"/>
+
+  <!-- Icon area -->
+  <rect x="452" y="104" width="44" height="44" rx="22" fill="#F7ECEE" opacity="0.70"/>
+  <!-- Pipeline icon (simplified branching) -->
+  <circle cx="474" cy="126" r="5" stroke="#717580" stroke-width="1.5" fill="none" opacity="0.70"/>
+  <line x1="479" y1="123" x2="486" y2="118" stroke="#717580" stroke-width="1.2" stroke-linecap="round" opacity="0.60"/>
+  <line x1="479" y1="129" x2="486" y2="134" stroke="#717580" stroke-width="1.2" stroke-linecap="round" opacity="0.60"/>
+  <circle cx="490" cy="116" r="4" stroke="#717580" stroke-width="1.2" fill="none" opacity="0.50"/>
+  <circle cx="490" cy="136" r="4" stroke="#717580" stroke-width="1.2" fill="none" opacity="0.50"/>
+
+  <text x="452" y="166" font-family="Georgia, serif" font-size="16" fill="#111111" opacity="0.65">Pipeline Flow</text>
+  <text x="452" y="184" font-family="Georgia, serif" font-size="9" fill="#717580" opacity="0.75">Modular pipeline with separate</text>
+  <text x="452" y="196" font-family="Georgia, serif" font-size="9" fill="#717580" opacity="0.75">ASR, LLM, and TTS providers</text>
+
+  <text x="452" y="224" font-family="Georgia, serif" font-size="9.5" fill="#111111" opacity="0.45">Features:</text>
+
+  <circle cx="458" cy="244" r="2.5" fill="#717580" opacity="0.40"/>
+  <text x="468" y="248" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.65">Separate providers for each stage</text>
+
+  <circle cx="458" cy="272" r="2.5" fill="#717580" opacity="0.40"/>
+  <text x="468" y="276" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.65">Mix and match best-in-class</text>
+  <text x="468" y="290" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.65">services</text>
+
+  <circle cx="458" cy="308" r="2.5" fill="#717580" opacity="0.40"/>
+  <text x="468" y="312" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.65">More control over each stage</text>
+
+  <circle cx="458" cy="332" r="2.5" fill="#717580" opacity="0.40"/>
+  <text x="468" y="336" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.65">Advanced customisation options</text>
+
+  <!-- Select button (inactive) -->
+  <rect x="452" y="420" width="280" height="36" rx="8" fill="white" stroke="#111111" stroke-opacity="0.14" stroke-width="0.8"/>
+  <text x="592" y="443" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#717580" opacity="0.75">Select Pipeline Flow</text>
+</svg>

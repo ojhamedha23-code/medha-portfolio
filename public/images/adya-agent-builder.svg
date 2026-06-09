@@ -1,0 +1,128 @@
+<svg viewBox="0 0 800 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer frame -->
+  <rect width="800" height="520" rx="10" fill="#FAFAF8" stroke="#111111" stroke-opacity="0.10" stroke-width="0.8"/>
+
+  <!-- LEFT SIDEBAR (0-155) -->
+  <rect width="155" height="520" rx="0" fill="#F7ECEE"/>
+  <rect x="145" width="10" height="520" fill="#F7ECEE"/>
+  <line x1="155" y1="0" x2="155" y2="520" stroke="#111111" stroke-opacity="0.09" stroke-width="0.8"/>
+
+  <!-- Sidebar brand/logo -->
+  <rect x="15" y="13" width="22" height="22" rx="5" fill="#8B1A2B" opacity="0.85"/>
+  <text x="44" y="28" font-family="Georgia, serif" font-size="12" fill="#111111" opacity="0.80">Agents</text>
+
+  <!-- Active nav item: My Agents -->
+  <rect x="8" y="50" width="140" height="26" rx="5" fill="#111111" fill-opacity="0.07"/>
+  <text x="22" y="66" font-family="Georgia, serif" font-size="10.5" fill="#111111" opacity="0.85">My Agents</text>
+
+  <!-- Other nav items -->
+  <text x="22" y="98" font-family="Georgia, serif" font-size="10.5" fill="#717580">All Agents</text>
+  <text x="22" y="128" font-family="Georgia, serif" font-size="10.5" fill="#717580">Knowledge Base</text>
+  <text x="22" y="158" font-family="Georgia, serif" font-size="10.5" fill="#717580">Provider Keys</text>
+  <text x="22" y="188" font-family="Georgia, serif" font-size="10.5" fill="#717580">Call Sessions</text>
+
+  <!-- CENTRE PANEL (155-370) -->
+  <rect x="155" width="215" height="520" fill="white"/>
+  <line x1="370" y1="0" x2="370" y2="520" stroke="#111111" stroke-opacity="0.07" stroke-width="0.8"/>
+
+  <!-- Centre header -->
+  <text x="172" y="26" font-family="Georgia, serif" font-size="12" fill="#111111" opacity="0.85">Agent Builder</text>
+  <text x="172" y="40" font-family="Georgia, serif" font-size="8.5" fill="#717580">Create your voice agent</text>
+  <!-- Realtime Flow badge -->
+  <rect x="172" y="48" width="78" height="16" rx="8" fill="#8B1A2B" fill-opacity="0.10" stroke="#8B1A2B" stroke-opacity="0.30" stroke-width="0.7"/>
+  <text x="211" y="59.5" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#8B1A2B">Realtime Flow</text>
+
+  <!-- Vertical connector -->
+  <line x1="181" y1="94" x2="181" y2="415" stroke="#111111" stroke-opacity="0.10" stroke-width="1" stroke-dasharray="2 4"/>
+
+  <!-- Step 1: Flow Type — COMPLETED -->
+  <circle cx="181" cy="88" r="8" fill="#8B1A2B"/>
+  <path d="M 177 88 L 180 91 L 185 85" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="196" y="86" font-family="Georgia, serif" font-size="10" fill="#717580">Flow Type</text>
+  <text x="196" y="97" font-family="Georgia, serif" font-size="7.5" fill="#717580" opacity="0.6">Choose between realtime...</text>
+
+  <!-- Step 2: Agent Details — ACTIVE -->
+  <circle cx="181" cy="128" r="8" fill="#111111"/>
+  <text x="181" y="132" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="white">2</text>
+  <text x="196" y="126" font-family="Georgia, serif" font-size="10" fill="#111111" opacity="0.90">Agent Details</text>
+  <text x="196" y="137" font-family="Georgia, serif" font-size="7.5" fill="#717580">Set agent name and description</text>
+
+  <!-- Step 3 -->
+  <circle cx="181" cy="168" r="7.5" fill="none" stroke="#717580" stroke-opacity="0.35" stroke-width="1"/>
+  <text x="181" y="172" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#717580" opacity="0.55">3</text>
+  <text x="196" y="166" font-family="Georgia, serif" font-size="10" fill="#717580" opacity="0.55">Realtime Provider</text>
+  <text x="196" y="177" font-family="Georgia, serif" font-size="7.5" fill="#717580" opacity="0.40">Configure realtime LLM provider</text>
+
+  <!-- Steps 4-10 (compact) -->
+  <!-- Step 4 -->
+  <circle cx="181" cy="203" r="7" fill="none" stroke="#717580" stroke-opacity="0.28" stroke-width="0.9"/>
+  <text x="181" y="207" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#717580" opacity="0.45">4</text>
+  <text x="195" y="206" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.45">ASR Provider</text>
+
+  <!-- Step 5 -->
+  <circle cx="181" cy="233" r="7" fill="none" stroke="#717580" stroke-opacity="0.28" stroke-width="0.9"/>
+  <text x="181" y="237" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#717580" opacity="0.45">5</text>
+  <text x="195" y="236" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.45">LLM Provider</text>
+
+  <!-- Step 6 -->
+  <circle cx="181" cy="263" r="7" fill="none" stroke="#717580" stroke-opacity="0.28" stroke-width="0.9"/>
+  <text x="181" y="267" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#717580" opacity="0.45">6</text>
+  <text x="195" y="266" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.45">TTS Provider</text>
+
+  <!-- Step 7 -->
+  <circle cx="181" cy="293" r="7" fill="none" stroke="#717580" stroke-opacity="0.28" stroke-width="0.9"/>
+  <text x="181" y="297" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#717580" opacity="0.45">7</text>
+  <text x="195" y="296" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.45">Telephony</text>
+
+  <!-- Step 8 -->
+  <circle cx="181" cy="323" r="7" fill="none" stroke="#717580" stroke-opacity="0.28" stroke-width="0.9"/>
+  <text x="181" y="327" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#717580" opacity="0.45">8</text>
+  <text x="195" y="326" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.45">Knowledge Base</text>
+
+  <!-- Step 9 -->
+  <circle cx="181" cy="353" r="7" fill="none" stroke="#717580" stroke-opacity="0.28" stroke-width="0.9"/>
+  <text x="181" y="357" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#717580" opacity="0.45">9</text>
+  <text x="195" y="356" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.45">Tools</text>
+
+  <!-- Step 10 -->
+  <circle cx="181" cy="383" r="7" fill="none" stroke="#717580" stroke-opacity="0.28" stroke-width="0.9"/>
+  <text x="181" y="387" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" fill="#717580" opacity="0.45">10</text>
+  <text x="195" y="386" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.45">System Settings</text>
+
+  <!-- RIGHT PANEL (370-800) -->
+  <rect x="370" width="430" height="520" fill="#FAFAF8"/>
+
+  <!-- Back nav -->
+  <text x="390" y="26" font-family="Georgia, serif" font-size="10.5" fill="#717580">← My Agent</text>
+
+  <!-- Form card -->
+  <rect x="385" y="38" width="398" height="466" rx="8" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+
+  <!-- Form heading -->
+  <text x="408" y="68" font-family="Georgia, serif" font-size="17" fill="#111111" opacity="0.88">Agent Details</text>
+  <text x="408" y="86" font-family="Georgia, serif" font-size="9.5" fill="#717580">Provide basic information about your voice agent.</text>
+
+  <line x1="408" y1="100" x2="764" y2="100" stroke="#111111" stroke-opacity="0.07" stroke-width="0.8"/>
+
+  <!-- Section header -->
+  <text x="408" y="120" font-family="Georgia, serif" font-size="11.5" fill="#111111" opacity="0.70">Basic Information</text>
+
+  <!-- Agent Name -->
+  <text x="408" y="148" font-family="Georgia, serif" font-size="9.5" fill="#111111" opacity="0.60">Agent Name *</text>
+  <rect x="408" y="155" width="355" height="36" rx="6" fill="white" stroke="#111111" stroke-opacity="0.14" stroke-width="0.8"/>
+  <text x="422" y="178" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.55">e.g., Customer Support Agent</text>
+  <text x="408" y="202" font-family="Georgia, serif" font-size="8.5" fill="#717580" opacity="0.50">A clear, descriptive name for your agent</text>
+
+  <!-- Agent Description -->
+  <text x="408" y="228" font-family="Georgia, serif" font-size="9.5" fill="#111111" opacity="0.60">Agent Description *</text>
+  <rect x="408" y="235" width="355" height="88" rx="6" fill="white" stroke="#111111" stroke-opacity="0.14" stroke-width="0.8"/>
+  <text x="422" y="257" font-family="Georgia, serif" font-size="9.5" fill="#717580" opacity="0.50">Describe what your agent does and its purpose</text>
+  <text x="408" y="336" font-family="Georgia, serif" font-size="8.5" fill="#717580" opacity="0.50">A detailed description of your agent's purpose and capabilities</text>
+
+  <!-- Button row -->
+  <line x1="385" y1="460" x2="783" y2="460" stroke="#111111" stroke-opacity="0.07" stroke-width="0.8"/>
+  <rect x="408" y="470" width="68" height="26" rx="6" fill="white" stroke="#111111" stroke-opacity="0.13" stroke-width="0.8"/>
+  <text x="442" y="487" text-anchor="middle" font-family="Georgia, serif" font-size="9.5" fill="#717580">← Back</text>
+  <rect x="693" y="470" width="82" height="26" rx="6" fill="#111111"/>
+  <text x="734" y="487" text-anchor="middle" font-family="Georgia, serif" font-size="9.5" fill="white" opacity="0.88">Continue →</text>
+</svg>

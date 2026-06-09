@@ -1,8 +1,8 @@
 ---
 title: "Building Adya's AI Voice Agent — Zero to Enterprise"
-summary: "How I built a Voice AI platform from scratch as the founding PM — from customer discovery and product definition to custom agent deployments and enterprise sales. The product shipped to 15+ enterprise clients, with 4 converting to paying pilots."
+summary: "How I built a Voice AI platform from scratch as the founding PM — from customer discovery and architecture decisions to custom agent deployments and enterprise sales. Shipped to 15+ enterprise clients with 4 converting to paying pilots."
 date: "2025-01-01"
-tags: ["Voice AI", "Product Management", "0-to-1", "Enterprise", "AI"]
+tags: ["Voice AI", "Product Management", "0-to-1", "Enterprise", "B2B"]
 showInListing: true
 context: "Adya · AI Voice Agent · Product Manager"
 ---
@@ -11,58 +11,108 @@ context: "Adya · AI Voice Agent · Product Manager"
 
 Customer support in India runs almost entirely on human agents. For small and medium businesses, this creates a compounding set of problems that are hard to fix with headcount alone:
 
-- **Cost** — Hiring, training, and managing a support team is expensive at every scale. Agent attrition makes it worse.
-- **Coverage** — Human agents work shifts. Customers don't. Calls that come in at night, on weekends, or during peak hours either go unanswered or hit long queues.
-- **Consistency** — The quality of a customer interaction depends on which agent picks up, how they're feeling, and how well they've been trained. That variability is invisible until it's already cost you a customer.
-- **Speed** — A customer with a billing question or delivery issue wants an answer in seconds, not after navigating an IVR tree and waiting on hold.
+- **Cost** — Hiring, training, and managing a support team is expensive at every scale, and agent attrition compounds it.
+- **Coverage** — Human agents work shifts. Customers don't. Calls that come in at night or during peak hours either go unanswered or hit long queues.
+- **Consistency** — The quality of a customer interaction depends on which agent picks up and how well they're trained. That variability is invisible until it's already cost you a customer.
+- **Speed** — A customer with a billing question or delivery issue wants an answer immediately, not after an IVR tree and a hold queue.
 
-The opportunity was clear: a voice AI agent that could handle these calls around the clock — in natural, human-like Indian English and Hinglish — would directly address all four.
+A voice AI agent that could handle these calls around the clock — in natural, context-aware conversation — would directly replace the most expensive and brittle part of the customer support stack.
 
 ---
 
-## What I Built
+## Product Architecture
 
-Adya's AI Voice Agent (the platform we internally called V2V — Voice-to-Voice) is a product that lets businesses deploy custom AI agents for inbound and outbound phone calls. The agent can hold full, context-aware conversations — qualifying leads, resolving support queries, scheduling appointments, gathering feedback, and routing to a human when needed.
+The platform (internally called V2V — Voice-to-Voice) supports two distinct architectures, which I designed as first-class choices in the product rather than hidden configuration:
 
-The customer-facing platform I designed and shipped included:
+![Agent flow type selection screen showing Real-Time Flow and Pipeline Flow options](/images/adya-flow-types.svg)
 
-**Call Agent Configuration**
-Every business has a different script, tone, and set of tasks. I built the system for creating custom agent personas — defining the agent's voice, language, call flow logic, and escalation rules. A logistics company's agent handles delivery rescheduling. A clinic's agent handles appointment booking. The configuration layer made this reusable without engineering involvement for each new client.
+**Real-Time Flow** routes the entire conversation through a single LLM provider end-to-end. The call is transcribed, processed, and responded to in real time by one model. This produces lower latency — critical for natural-feeling phone conversations — and is significantly easier for customers to configure and deploy.
 
-**Campaign Management**
-For outbound use cases — follow-ups, reminders, lead qualification — we built a campaigns module. Businesses could upload contact lists, assign an agent configuration, schedule a campaign, and get structured results back. Internally, this was the feature that most directly replaced repetitive human outbound calling.
+**Pipeline Flow** is a modular architecture where each stage of the conversation is handled by a separately configured provider:
 
-**Supervisor Dashboard**
-Managers needed visibility. I designed a real-time dashboard showing active calls, call status, and quality indicators — giving supervisors the ability to monitor live conversations and intervene when needed. Post-call, the platform surfaces AI-generated summaries and sentiment analysis for every call, turning a conversation into a structured record without any manual note-taking.
+| Stage | Provider Type | Purpose |
+|-------|--------------|---------|
+| ASR (Automatic Speech Recognition) | Speech-to-text | Transcribes the caller's voice in real time |
+| LLM (Large Language Model) | Language model | Generates the response |
+| TTS (Text-to-Speech) | Voice synthesis | Converts the response to speech |
 
-**Contacts and Groups**
-To make campaigns repeatable and targetable, we built a contact management layer — with groups for segmentation and reuse across multiple campaigns.
+Pipeline mode gives enterprise customers the ability to mix and match best-in-class services at each layer — for example, using a specialised Indian-language ASR model, a fine-tuned LLM, and a specific TTS voice. The tradeoff is additional latency from chaining three separate provider calls and higher configuration overhead.
+
+This architecture decision — surfacing both options with a clear comparison rather than hiding complexity — was a product judgment call. Most early customers started on Real-Time Flow and moved to Pipeline only when they had specific provider requirements.
+
+---
+
+## Agent Configuration
+
+Every agent on the platform is configured through a 10-step builder that progressively captures everything needed to deploy a working voice agent:
+
+![Agent Builder interface showing the 10-step configuration wizard](/images/adya-agent-builder.svg)
+
+The builder steps in sequence:
+
+1. **Flow Type** — Real-Time or Pipeline (see above)
+2. **Agent Details** — Name, description, and agent persona
+3. **Realtime Provider** — LLM configuration for Real-Time mode
+4. **ASR Provider** — Speech-to-text configuration for Pipeline mode
+5. **LLM Provider** — Language model for Pipeline mode
+6. **TTS Provider** — Voice synthesis and voice selection
+7. **Telephony** — Phone number provisioning and call routing rules
+8. **Knowledge Base** — Custom documents, FAQs, and product information the agent uses to answer questions
+9. **Tools** — External API integrations (CRM lookups, appointment systems, order status APIs)
+10. **System Settings** — Conversation parameters, escalation rules, call recording preferences
+
+The Knowledge Base and Tools steps were among the most important product decisions. A generic LLM can hold a conversation — but it cannot accurately answer "what's the status of order #48291" without access to real data. By making tool integrations a first-class configuration step rather than a developer-only feature, we let customers deploy agents that were genuinely useful for their specific workflows without engineering support.
+
+For each new enterprise client, I handled the agent configuration end-to-end: mapping their use case to the right flow type, importing their knowledge base documents, configuring escalation thresholds, and testing the call flow before go-live.
+
+---
+
+## Campaign Management
+
+For outbound use cases — payment reminders, appointment confirmations, lead qualification, customer surveys — the platform supports campaign management: uploading contact lists, scheduling batch calls, and collecting structured outcomes per call.
+
+This was the feature that most directly replaced repetitive human outbound calling. A team that previously spent 4 hours a day on follow-up calls could configure a campaign in 15 minutes and receive structured results — call outcome, duration, sentiment, AI summary — without touching a phone.
+
+---
+
+## Live Analytics
+
+Every deployment produces real-time analytics. Here is the actual production dashboard from a live client deployment:
+
+![Adya Voice Agent analytics dashboard showing 627 total calls, 93.62% connection rate, and 26,963 minutes of total talk time](/images/adya-dashboard.svg)
+
+Key metrics from production:
+
+| Metric | Value |
+|--------|-------|
+| Total calls handled | 627 |
+| Connected calls | 587 |
+| Call connection rate | 93.62% |
+| Total talk time | 26,963 minutes |
+| Average call duration | 63.44 minutes |
+| Call drop rate | 0% |
+
+The calls-over-time chart shows the ramp from the initial December 2024 deployment through scaling across the pilot period to May–June 2025. The sentiments panel surfaces the distribution of caller sentiment across the call volume — a signal used by supervisors to flag calls for human review.
+
+The 63-minute average call duration reflects the nature of the use case: these are not IVR-style transactional interactions but extended, context-aware conversations where the AI agent is handling complex queries end-to-end.
 
 ---
 
 ## My Role
 
-I joined Adya as the product manager for this product and built it from zero to one.
+I joined Adya as the product manager for this product and built it from zero to one. That meant no existing product, no defined spec, and no prior customer reference point.
 
-That meant starting with no existing product, no defined spec, and no prior customer reference point. My work spanned the full PM surface:
+**Customer Discovery** — I spoke with SMBs across retail, logistics, clinics, and financial services to map where phone calls were creating the most friction. The pattern: high-volume, repetitive calls (order status, appointment reminders, payment follow-ups) were consuming the most agent time and were the most automatable.
 
-**Customer Discovery**
-I spoke with SMBs across sectors — retail, logistics, clinics, financial services — to map out where phone calls were creating the most friction. The pattern that emerged: high-volume, repetitive calls (order status, appointment reminders, payment follow-ups) were consuming the most agent time and were the most automatable.
+**Product Definition** — I translated those conversations into a product architecture: what the platform needed to do, what customisation options customers required, and what the minimum viable version looked like.
 
-**Product Definition**
-I translated customer conversations into a product architecture — what the platform needed to do, what customisation options customers needed, and what the minimum viable version looked like for a first deployment.
+**UI and Configuration Design** — I defined the customer-facing dashboard — the agent builder flow, campaign management interface, analytics views, and supervisor tools.
 
-**UI Design**
-I defined the user interface for the customer-facing dashboard — how call agents are configured, how campaigns are set up and tracked, how supervisors monitor live operations, and how post-call analytics are surfaced.
+**Custom Deployments** — For each enterprise client, I configured the agent: adapting call flows, scripts, knowledge bases, and escalation rules to their specific use case. This was hands-on work that also served as the primary onboarding touchpoint.
 
-**Custom Agent Deployments**
-For each new enterprise client, I worked on the agent configuration — adapting call flows, scripts, and escalation logic to fit their specific use case. This was hands-on product work that also served as the primary touchpoint for customer onboarding.
+**Technical Demos** — I ran product demonstrations directly with enterprise prospects — walking through the platform, showing live call examples, and handling technical questions. Being the PM who could also demo removed a handoff that would have significantly slowed the sales cycle.
 
-**Technical Demos**
-I ran product demonstrations directly with enterprise prospects — walking through the platform, showing live call examples, and handling technical questions. Being the PM who could also do the demo removed a handoff that would have slowed the sales cycle down significantly.
-
-**Iteration**
-Every client deployment surfaced something. I managed the feedback loop across versions — prioritising what changed the call quality, what reduced setup time, and what unlocked new use cases.
+**Iteration** — Every deployment surfaced something. I managed the feedback loop across versions — prioritising changes that improved call quality, reduced setup time, and unlocked new use cases.
 
 ---
 
@@ -72,21 +122,11 @@ Every client deployment surfaced something. I managed the feedback loop across v
 |--------|--------|
 | Enterprise clients shipped to | 15+ |
 | Paying pilots converted | 4 |
-| Availability vs. human agents | 24/7 vs. business hours only |
-| Primary use cases deployed | Inbound support, outbound campaigns, lead qualification, appointment booking |
+| Availability | 24/7 vs. business hours only |
+| Primary use cases | Inbound support, outbound campaigns, lead qualification, appointment booking |
 
-The paying pilots represented the hardest validation in B2B enterprise sales: a company willing to commit budget to a new AI product in a category that didn't exist in their vendor landscape six months earlier.
+The paying pilots represented the hardest validation in B2B enterprise sales: companies willing to commit budget to a new AI product in a category that didn't exist in their vendor landscape six months prior.
 
 ---
 
-## What the Product Does Today
-
-The platform handles the full call lifecycle:
-
-- **Inbound calls** — AI agent picks up, identifies the customer's intent, resolves the query or routes to the right team
-- **Outbound campaigns** — Automated calls to contact lists with real-time tracking and structured outcomes per call
-- **AI call summaries** — Every call produces a written summary automatically, no agent note-taking required
-- **Sentiment analysis** — Post-call sentiment flagging surfaces calls that need follow-up or human review
-- **Supervisor view** — Live monitoring of active calls with quality indicators and the ability to intervene
-
-The product documentation is available at [docs.adya.ai](https://docs.adya.ai/s/home/doc/ai-voice-agent-DaIEBcRN4A), and Adya's own [product update announcement](https://www.linkedin.com/posts/adyadotai_ai-voiceai-callautomation-activity-7363224237387468800-qYHu) shows the platform in production.
+*Product documentation at [docs.adya.ai](https://docs.adya.ai/s/home/doc/ai-voice-agent-DaIEBcRN4A). Adya's own [product update](https://www.linkedin.com/posts/adyadotai_ai-voiceai-callautomation-activity-7363224237387468800-qYHu) shows the platform in production.*

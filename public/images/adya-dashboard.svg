@@ -1,0 +1,149 @@
+<svg viewBox="0 0 800 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="560" rx="10" fill="#FAFAF8" stroke="#111111" stroke-opacity="0.10" stroke-width="0.8"/>
+
+  <!-- Top nav bar -->
+  <rect width="800" height="52" fill="#F7ECEE" fill-opacity="0.65"/>
+  <line x1="0" y1="52" x2="800" y2="52" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <rect x="14" y="15" width="24" height="24" rx="5" fill="#8B1A2B" opacity="0.80"/>
+  <text x="46" y="30" font-family="Georgia, serif" font-size="12.5" fill="#111111" opacity="0.80">Voice To Voice Agent</text>
+
+  <!-- Sidebar (0-52, 52-560) -->
+  <rect x="0" y="52" width="52" height="508" fill="#F7ECEE" fill-opacity="0.50"/>
+  <line x1="52" y1="52" x2="52" y2="560" stroke="#111111" stroke-opacity="0.07" stroke-width="0.8"/>
+  <!-- Sidebar icons (simplified) -->
+  <rect x="15" y="76" width="22" height="22" rx="4" fill="#111111" fill-opacity="0.06"/>
+  <rect x="15" y="116" width="22" height="22" rx="4" fill="#111111" fill-opacity="0.06"/>
+  <rect x="15" y="156" width="22" height="22" rx="4" fill="#111111" fill-opacity="0.06"/>
+  <!-- Active icon -->
+  <rect x="15" y="196" width="22" height="22" rx="4" fill="#8B1A2B" opacity="0.70"/>
+
+  <!-- Main content (52-800) -->
+  <!-- Dashboard heading row -->
+  <text x="74" y="84" font-family="Georgia, serif" font-size="18" fill="#111111" opacity="0.88">Dashboard</text>
+
+  <!-- TOP METRICS ROW (3 cards) -->
+  <!-- Card 1: Total Calls -->
+  <rect x="74" y="100" width="207" height="68" rx="7" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="93" y="120" font-family="Georgia, serif" font-size="8.5" fill="#717580">Total Calls</text>
+  <text x="93" y="148" font-family="Georgia, serif" font-size="26" fill="#111111" opacity="0.88">627</text>
+
+  <!-- Card 2: Connected Calls -->
+  <rect x="293" y="100" width="207" height="68" rx="7" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="312" y="120" font-family="Georgia, serif" font-size="8.5" fill="#717580">Connected Calls</text>
+  <text x="312" y="148" font-family="Georgia, serif" font-size="26" fill="#8B1A2B" opacity="0.80">587</text>
+
+  <!-- Card 3: Failed Calls -->
+  <rect x="512" y="100" width="207" height="68" rx="7" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="531" y="120" font-family="Georgia, serif" font-size="8.5" fill="#717580">Failed Calls</text>
+  <text x="531" y="148" font-family="Georgia, serif" font-size="26" fill="#111111" opacity="0.55">12</text>
+
+  <!-- RATES ROW (4 cards) -->
+  <!-- Call Drop Rate -->
+  <rect x="74" y="182" width="148" height="58" rx="7" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="90" y="200" font-family="Georgia, serif" font-size="7.5" fill="#717580">Call Drop Rate</text>
+  <text x="90" y="226" font-family="Georgia, serif" font-size="18" fill="#717580" opacity="0.65">0.00%</text>
+
+  <!-- Call Connection Rate — HIGHLIGHTED -->
+  <rect x="234" y="182" width="148" height="58" rx="7" fill="white" stroke="#8B1A2B" stroke-opacity="0.30" stroke-width="0.8"/>
+  <text x="250" y="200" font-family="Georgia, serif" font-size="7.5" fill="#717580">Call Connection Rate</text>
+  <text x="250" y="226" font-family="Georgia, serif" font-size="18" fill="#8B1A2B" opacity="0.85">93.62%</text>
+
+  <!-- Call Transfer Rate -->
+  <rect x="394" y="182" width="148" height="58" rx="7" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="410" y="200" font-family="Georgia, serif" font-size="7.5" fill="#717580">Call Transfer Rate</text>
+  <text x="410" y="226" font-family="Georgia, serif" font-size="18" fill="#717580" opacity="0.65">0.00%</text>
+
+  <!-- Callback Rate -->
+  <rect x="554" y="182" width="165" height="58" rx="7" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="570" y="200" font-family="Georgia, serif" font-size="7.5" fill="#717580">Callback Rate</text>
+  <text x="570" y="226" font-family="Georgia, serif" font-size="18" fill="#717580" opacity="0.65">0.00%</text>
+
+  <!-- DURATION ROW (3 cards) -->
+  <!-- Total Talk Time -->
+  <rect x="74" y="254" width="207" height="58" rx="7" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="93" y="273" font-family="Georgia, serif" font-size="7.5" fill="#717580">Total Talk Time</text>
+  <text x="93" y="298" font-family="Georgia, serif" font-size="18" fill="#111111" opacity="0.85">26,963 mins</text>
+
+  <!-- Avg. Call Duration -->
+  <rect x="293" y="254" width="207" height="58" rx="7" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="312" y="273" font-family="Georgia, serif" font-size="7.5" fill="#717580">Avg. Call Duration</text>
+  <text x="312" y="298" font-family="Georgia, serif" font-size="18" fill="#111111" opacity="0.85">63.44 mins</text>
+
+  <!-- Call Retry Attempts -->
+  <rect x="512" y="254" width="207" height="58" rx="7" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="531" y="273" font-family="Georgia, serif" font-size="7.5" fill="#717580">Call Retry Attempts</text>
+  <text x="531" y="298" font-family="Georgia, serif" font-size="18" fill="#717580" opacity="0.50">0</text>
+
+  <!-- BOTTOM CHARTS ROW -->
+  <!-- Left: Calls Over Time (line chart) -->
+  <rect x="74" y="326" width="430" height="210" rx="8" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="94" y="350" font-family="Georgia, serif" font-size="11" fill="#111111" opacity="0.75">Calls Over Time</text>
+
+  <!-- Chart axes -->
+  <line x1="108" y1="365" x2="108" y2="506" stroke="#111111" stroke-opacity="0.12" stroke-width="0.8"/>
+  <line x1="108" y1="506" x2="480" y2="506" stroke="#111111" stroke-opacity="0.12" stroke-width="0.8"/>
+
+  <!-- Y-axis labels -->
+  <text x="102" y="380" text-anchor="end" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">300</text>
+  <text x="102" y="415" text-anchor="end" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">225</text>
+  <text x="102" y="450" text-anchor="end" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">150</text>
+  <text x="102" y="485" text-anchor="end" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">75</text>
+
+  <!-- X-axis labels (months Dec 2024 → Jun 2025) -->
+  <text x="118" y="520" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">Dec</text>
+  <text x="168" y="520" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">Jan</text>
+  <text x="218" y="520" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">Feb</text>
+  <text x="268" y="520" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">Mar</text>
+  <text x="318" y="520" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">Apr</text>
+  <text x="368" y="520" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">May</text>
+  <text x="418" y="520" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.60">Jun</text>
+
+  <!-- Growth line (Dec 2024 very low → Jun 2025 high) -->
+  <!-- Points: Dec=502(very low), Jan=498, Feb=490, Mar=430, Apr=385, May=380, Jun=390 (y from top=365) -->
+  <!-- Actually let's go with a nice growth curve. Chart area: y 365 to 506, x 118 to 468 -->
+  <!-- 300 calls = y 380, 0 calls = y 506. So y = 506 - (calls/300)*126 -->
+  <!-- Points: Dec~5calls=y504, Jan~8=y503, Feb~20=y497, Mar~200=y422, Apr~280=y389, May~295=y382, Jun~270=y392 -->
+  <polyline
+    points="118,504 168,502 218,494 268,422 318,390 368,381 418,392"
+    stroke="#8B1A2B"
+    stroke-width="2"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.70"
+  />
+  <!-- Shaded area under line -->
+  <polygon
+    points="118,504 168,502 218,494 268,422 318,390 368,381 418,392 418,506 118,506"
+    fill="#8B1A2B"
+    fill-opacity="0.06"
+  />
+  <!-- Data point dots -->
+  <circle cx="118" cy="504" r="3" fill="#8B1A2B" opacity="0.55"/>
+  <circle cx="168" cy="502" r="3" fill="#8B1A2B" opacity="0.55"/>
+  <circle cx="218" cy="494" r="3" fill="#8B1A2B" opacity="0.55"/>
+  <circle cx="268" cy="422" r="3.5" fill="#8B1A2B" opacity="0.70"/>
+  <circle cx="318" cy="390" r="3.5" fill="#8B1A2B" opacity="0.70"/>
+  <circle cx="368" cy="381" r="4" fill="#8B1A2B" opacity="0.80"/>
+  <circle cx="418" cy="392" r="3.5" fill="#8B1A2B" opacity="0.70"/>
+
+  <!-- Right: Sentiments Summary (pie chart) -->
+  <rect x="516" y="326" width="202" height="210" rx="8" fill="white" stroke="#111111" stroke-opacity="0.08" stroke-width="0.8"/>
+  <text x="535" y="350" font-family="Georgia, serif" font-size="11" fill="#111111" opacity="0.75">Sentiments</text>
+
+  <!-- Pie chart (simplified segments) -->
+  <!-- Center: 617, 440 ; radius 58 -->
+  <!-- Positive (large): ~70% -->
+  <path d="M 617 440 L 617 382 A 58 58 0 1 1 568 475 Z" fill="#8B1A2B" fill-opacity="0.55"/>
+  <!-- Neutral ~20% -->
+  <path d="M 617 440 L 568 475 A 58 58 0 0 1 595 383 Z" fill="#717580" fill-opacity="0.30"/>
+  <!-- Negative ~10% -->
+  <path d="M 617 440 L 595 383 A 58 58 0 0 1 617 382 Z" fill="#8B1A2B" fill-opacity="0.25"/>
+
+  <!-- Legend -->
+  <rect x="535" y="495" width="10" height="10" rx="2" fill="#8B1A2B" opacity="0.55"/>
+  <text x="549" y="503.5" font-family="Georgia, serif" font-size="7.5" fill="#717580">Positive</text>
+  <rect x="595" y="495" width="10" height="10" rx="2" fill="#717580" opacity="0.30"/>
+  <text x="609" y="503.5" font-family="Georgia, serif" font-size="7.5" fill="#717580">Neutral</text>
+</svg>

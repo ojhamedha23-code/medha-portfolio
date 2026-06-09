@@ -11,8 +11,8 @@ export default function ProjectsPage() {
       <div className="mb-12">
         <h1 className="font-serif text-4xl text-ink mb-4">Work</h1>
         <p className="font-sans text-muted text-lg leading-relaxed max-w-xl">
-          Products I&apos;ve built and shipped — from zero-to-one AI agents to
-          personal tools. Each one comes with a case study.
+          Products I&apos;ve built and shipped include 0-to-1 AI-native B2B
+          products, academic AI projects and personal tools for productivity.
         </p>
       </div>
 
