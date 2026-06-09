@@ -1,80 +1,69 @@
 <svg viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Cream paper background -->
-  <rect width="400" height="240" fill="#FEF6EE"/>
+  <!-- Background -->
+  <rect width="400" height="240" fill="#FAFAF8"/>
 
-  <!-- Corner accent dots (top-right) -->
-  <circle cx="375" cy="16" r="3.5" fill="#8B1A2B" opacity="0.75"/>
-  <circle cx="387" cy="28" r="2" fill="#8B1A2B" opacity="0.55"/>
-  <circle cx="368" cy="34" r="2.5" fill="#8B1A2B" opacity="0.6"/>
-  <line x1="378" y1="44" x2="392" y2="38" stroke="#8B1A2B" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+  <!-- Header bar -->
+  <rect x="0" y="0" width="400" height="38" fill="#111111" fill-opacity="0.04"/>
+  <text x="22" y="24" font-family="Georgia, serif" font-size="9" fill="#111111" opacity="0.55" letter-spacing="2">HR ATTRITION MODEL</text>
 
-  <!-- Chart axes -->
-  <line x1="54" y1="24" x2="54" y2="196" stroke="#111111" stroke-width="2"/>
-  <line x1="54" y1="196" x2="378" y2="196" stroke="#111111" stroke-width="2"/>
-  <!-- Y-axis arrow -->
-  <path d="M 48 28 L 54 18 L 60 28" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- X-axis arrow -->
-  <path d="M 374 190 L 384 196 L 374 202" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- AUC metric (top right) -->
+  <text x="378" y="16" text-anchor="end" font-family="Georgia, serif" font-size="7.5" fill="#717580" letter-spacing="1">AUC SCORE</text>
+  <text x="378" y="33" text-anchor="end" font-family="Georgia, serif" font-size="18" fill="#8B1A2B" opacity="0.85">0.86</text>
 
-  <!-- Y-axis tick marks -->
-  <line x1="49" y1="80"  x2="59" y2="80"  stroke="#111111" stroke-width="1" opacity="0.35"/>
-  <line x1="49" y1="128" x2="59" y2="128" stroke="#111111" stroke-width="1" opacity="0.35"/>
-  <line x1="49" y1="164" x2="59" y2="164" stroke="#111111" stroke-width="1" opacity="0.35"/>
+  <!-- Chart area -->
+  <!-- Y axis -->
+  <line x1="52" y1="48" x2="52" y2="192" stroke="#111111" stroke-opacity="0.18" stroke-width="1"/>
+  <!-- X axis -->
+  <line x1="52" y1="192" x2="382" y2="192" stroke="#111111" stroke-opacity="0.18" stroke-width="1"/>
 
   <!-- Subtle horizontal grid lines -->
-  <line x1="54" y1="80"  x2="372" y2="80"  stroke="#111111" stroke-width="0.7" opacity="0.08"/>
-  <line x1="54" y1="128" x2="372" y2="128" stroke="#111111" stroke-width="0.7" opacity="0.08"/>
-  <line x1="54" y1="164" x2="372" y2="164" stroke="#111111" stroke-width="0.7" opacity="0.08"/>
+  <line x1="52" y1="96"  x2="382" y2="96"  stroke="#111111" stroke-opacity="0.05" stroke-width="0.8"/>
+  <line x1="52" y1="144" x2="382" y2="144" stroke="#111111" stroke-opacity="0.05" stroke-width="0.8"/>
 
-  <!-- 6 bars (x positions: 64, 116, 168, 220, 272, 324 — width 36 each) -->
-  <!-- Bar 1 -->
-  <rect x="64"  y="116" width="36" height="80" rx="2" fill="#F5EDE3" stroke="#111111" stroke-width="1.5" opacity="0.8"/>
-  <!-- Bar 2 -->
-  <rect x="116" y="96"  width="36" height="100" rx="2" fill="#F5EDE3" stroke="#111111" stroke-width="1.5" opacity="0.8"/>
-  <!-- Bar 3 — AT RISK (highlighted, tallest) -->
-  <rect x="168" y="60"  width="36" height="136" rx="2" fill="#FFF0E8" stroke="#8B1A2B" stroke-width="2.2"/>
-  <!-- Bar 4 -->
-  <rect x="220" y="104" width="36" height="92" rx="2" fill="#F5EDE3" stroke="#111111" stroke-width="1.5" opacity="0.8"/>
-  <!-- Bar 5 -->
-  <rect x="272" y="130" width="36" height="66" rx="2" fill="#F5EDE3" stroke="#111111" stroke-width="1.5" opacity="0.8"/>
-  <!-- Bar 6 -->
-  <rect x="324" y="152" width="36" height="44" rx="2" fill="#F5EDE3" stroke="#111111" stroke-width="1.5" opacity="0.8"/>
+  <!-- Y-axis labels -->
+  <text x="46" y="99" text-anchor="end" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.7">50%</text>
+  <text x="46" y="147" text-anchor="end" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.7">25%</text>
 
-  <!-- Person figures above each bar (head + body + arms) -->
-  <!-- Person 1 -->
-  <circle cx="82"  cy="102" r="6.5" fill="white" stroke="#111111" stroke-width="1.5"/>
-  <line x1="82" y1="108" x2="82" y2="118" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="75" y1="112" x2="89" y2="112" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- 6 bars: x positions 62,112,162,212,262,312 width=38 -->
+  <!-- Bar bottom at y=192 -->
+  <!-- heights in px: Sales=68, Eng=90, HR=55, Ops=112, R&D=144 (highlighted), Mktg=75 -->
 
-  <!-- Person 2 -->
-  <circle cx="134" cy="82" r="6.5" fill="white" stroke="#111111" stroke-width="1.5"/>
-  <line x1="134" y1="88" x2="134" y2="98" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="127" y1="92" x2="141" y2="92" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Bar 1: Sales h=68 -->
+  <rect x="62" y="124" width="38" height="68" rx="3" fill="#111111" fill-opacity="0.09"/>
 
-  <!-- Person 3 — AT RISK (burgundy) -->
-  <circle cx="186" cy="44" r="7.5" fill="#FFF0E8" stroke="#8B1A2B" stroke-width="2"/>
-  <line x1="186" y1="52" x2="186" y2="62" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round"/>
-  <line x1="178" y1="56" x2="194" y2="56" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round"/>
-  <!-- Alert mark above at-risk person -->
-  <line x1="186" y1="28" x2="186" y2="34" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round"/>
-  <circle cx="186" cy="38" r="1.5" fill="#8B1A2B"/>
+  <!-- Bar 2: Engineering h=90 -->
+  <rect x="112" y="102" width="38" height="90" rx="3" fill="#111111" fill-opacity="0.09"/>
 
-  <!-- Person 4 -->
-  <circle cx="238" cy="90" r="6.5" fill="white" stroke="#111111" stroke-width="1.5"/>
-  <line x1="238" y1="96" x2="238" y2="106" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="231" y1="100" x2="245" y2="100" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Bar 3: HR h=55 -->
+  <rect x="162" y="137" width="38" height="55" rx="3" fill="#111111" fill-opacity="0.09"/>
 
-  <!-- Person 5 -->
-  <circle cx="290" cy="116" r="6.5" fill="white" stroke="#111111" stroke-width="1.5"/>
-  <line x1="290" y1="122" x2="290" y2="132" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="283" y1="126" x2="297" y2="126" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Bar 4: Operations h=112 -->
+  <rect x="212" y="80" width="38" height="112" rx="3" fill="#111111" fill-opacity="0.12"/>
 
-  <!-- Person 6 -->
-  <circle cx="342" cy="138" r="6.5" fill="white" stroke="#111111" stroke-width="1.5"/>
-  <line x1="342" y1="144" x2="342" y2="154" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="335" y1="148" x2="349" y2="148" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Bar 5: R&D h=144 HIGHLIGHTED -->
+  <rect x="262" y="48" width="38" height="144" rx="3" fill="#8B1A2B" opacity="0.55"/>
+  <!-- Risk label above -->
+  <text x="281" y="43" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" fill="#8B1A2B" opacity="0.85">HIGH</text>
 
-  <!-- Trend line connecting bar tops -->
-  <polyline points="82,116 134,96 186,60 238,104 290,130 342,152"
-            stroke="#8B1A2B" stroke-width="1.8" stroke-dasharray="6 4" fill="none" opacity="0.55" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bar 6: Marketing h=75 -->
+  <rect x="312" y="117" width="38" height="75" rx="3" fill="#111111" fill-opacity="0.09"/>
+
+  <!-- X-axis labels -->
+  <text x="81"  y="204" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#717580">Sales</text>
+  <text x="131" y="204" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#717580">Eng</text>
+  <text x="181" y="204" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#717580">HR</text>
+  <text x="231" y="204" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#717580">Ops</text>
+  <text x="281" y="204" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" fill="#8B1A2B" opacity="0.75">R&amp;D</text>
+  <text x="331" y="204" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#717580">Mktg</text>
+
+  <!-- Trend line -->
+  <polyline points="81,158 131,147 181,164 231,136 281,120 331,154"
+            stroke="#8B1A2B" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.40"
+            stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Legend -->
+  <rect x="22" y="216" width="10" height="10" rx="2" fill="#8B1A2B" opacity="0.55"/>
+  <text x="36" y="225" font-family="Georgia, serif" font-size="7.5" fill="#717580">Attrition risk by dept</text>
+  <line x1="200" y1="221" x2="220" y2="221" stroke="#8B1A2B" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.40" stroke-linecap="round"/>
+  <text x="225" y="225" font-family="Georgia, serif" font-size="7.5" fill="#717580">Risk trend</text>
 </svg>

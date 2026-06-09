@@ -1,57 +1,54 @@
 <svg viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Cream paper background -->
-  <rect width="400" height="240" fill="#FEF6EE"/>
+  <!-- Background -->
+  <rect width="400" height="240" fill="#F7ECEE"/>
 
-  <!-- Corner accent dots (top-right) -->
-  <circle cx="375" cy="16" r="3.5" fill="#8B1A2B" opacity="0.75"/>
-  <circle cx="387" cy="28" r="2" fill="#8B1A2B" opacity="0.55"/>
-  <circle cx="368" cy="34" r="2.5" fill="#8B1A2B" opacity="0.6"/>
-  <line x1="378" y1="44" x2="392" y2="38" stroke="#8B1A2B" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+  <!-- Header bar -->
+  <rect x="0" y="0" width="400" height="38" fill="#111111" fill-opacity="0.04"/>
+  <text x="22" y="24" font-family="Georgia, serif" font-size="9" fill="#111111" opacity="0.55" letter-spacing="2">PITCH SCREENING AGENT</text>
+  <!-- Progress indicator -->
+  <text x="378" y="24" text-anchor="end" font-family="Georgia, serif" font-size="8.5" fill="#717580">3 / 12 screened</text>
 
-  <!-- Document stack — back -->
-  <rect x="38" y="32" width="178" height="182" rx="6" fill="white" stroke="#111111" stroke-width="1.4" opacity="0.4"/>
-  <!-- Document stack — middle -->
-  <rect x="48" y="42" width="178" height="182" rx="6" fill="white" stroke="#111111" stroke-width="1.7" opacity="0.65"/>
-  <!-- Document stack — front -->
-  <rect x="58" y="52" width="178" height="172" rx="6" fill="white" stroke="#111111" stroke-width="2.2"/>
+  <!-- Progress bar -->
+  <rect x="22" y="32" width="356" height="3" rx="1.5" fill="#111111" fill-opacity="0.06"/>
+  <rect x="22" y="32" width="89" height="3" rx="1.5" fill="#8B1A2B" opacity="0.50"/>
 
-  <!-- Document content -->
-  <!-- Title line -->
-  <line x1="78" y1="74" x2="200" y2="74" stroke="#111111" stroke-width="2" opacity="0.5"/>
-  <!-- Subtitle -->
-  <line x1="78" y1="86" x2="176" y2="86" stroke="#111111" stroke-width="1.2" opacity="0.32"/>
-  <!-- Horizontal rule -->
-  <line x1="78" y1="96" x2="218" y2="96" stroke="#111111" stroke-width="0.8" opacity="0.15"/>
-  <!-- Body text lines -->
-  <line x1="78" y1="108" x2="218" y2="108" stroke="#111111" stroke-width="1.2" opacity="0.28"/>
-  <line x1="78" y1="118" x2="196" y2="118" stroke="#111111" stroke-width="1.2" opacity="0.22"/>
-  <line x1="78" y1="128" x2="212" y2="128" stroke="#111111" stroke-width="1.2" opacity="0.28"/>
-  <line x1="78" y1="138" x2="168" y2="138" stroke="#111111" stroke-width="1.2" opacity="0.2"/>
+  <!-- Row 1: PASS -->
+  <rect x="22" y="48" width="356" height="52" rx="8" fill="white" stroke="#111111" stroke-opacity="0.09" stroke-width="0.8"/>
+  <!-- Document icon -->
+  <rect x="36" y="62" width="22" height="26" rx="3" fill="#F7ECEE" stroke="#111111" stroke-opacity="0.18" stroke-width="0.8"/>
+  <line x1="41" y1="70" x2="52" y2="70" stroke="#111111" stroke-opacity="0.30" stroke-width="1"/>
+  <line x1="41" y1="75" x2="52" y2="75" stroke="#111111" stroke-opacity="0.20" stroke-width="1"/>
+  <line x1="41" y1="80" x2="49" y2="80" stroke="#111111" stroke-opacity="0.15" stroke-width="1"/>
+  <!-- Company info -->
+  <text x="68" y="67" font-family="Georgia, serif" font-size="9" fill="#111111" opacity="0.85">SeedMind AI</text>
+  <text x="68" y="80" font-family="Georgia, serif" font-size="7.5" fill="#717580">Series A · B2B SaaS · $2M ask</text>
+  <text x="68" y="91" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.6">Strong founding team, clear TAM</text>
+  <!-- PASS badge -->
+  <rect x="318" y="60" width="44" height="20" rx="10" fill="#8B1A2B" opacity="0.12"/>
+  <rect x="318" y="60" width="44" height="20" rx="10" stroke="#8B1A2B" stroke-opacity="0.40" stroke-width="0.8"/>
+  <text x="340" y="74" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#8B1A2B">PASS</text>
 
-  <!-- Mini bar chart at bottom of document -->
-  <line x1="78" y1="196" x2="224" y2="196" stroke="#111111" stroke-width="1.5" opacity="0.38"/>
-  <rect x="84"  y="168" width="20" height="28" rx="2" fill="#F5EDE3" stroke="#111111" stroke-width="1.2" opacity="0.55"/>
-  <rect x="112" y="176" width="20" height="20" rx="2" fill="#F5EDE3" stroke="#111111" stroke-width="1.2" opacity="0.55"/>
-  <rect x="140" y="160" width="20" height="36" rx="2" fill="#FFF0E8" stroke="#8B1A2B" stroke-width="1.5"/>
-  <rect x="168" y="180" width="20" height="16" rx="2" fill="#F5EDE3" stroke="#111111" stroke-width="1.2" opacity="0.55"/>
-  <rect x="196" y="172" width="20" height="24" rx="2" fill="#F5EDE3" stroke="#111111" stroke-width="1.2" opacity="0.55"/>
+  <!-- Row 2: REVIEW -->
+  <rect x="22" y="110" width="356" height="52" rx="8" fill="white" stroke="#111111" stroke-opacity="0.09" stroke-width="0.8"/>
+  <rect x="36" y="124" width="22" height="26" rx="3" fill="#F7ECEE" stroke="#111111" stroke-opacity="0.18" stroke-width="0.8"/>
+  <line x1="41" y1="132" x2="52" y2="132" stroke="#111111" stroke-opacity="0.30" stroke-width="1"/>
+  <line x1="41" y1="137" x2="52" y2="137" stroke="#111111" stroke-opacity="0.20" stroke-width="1"/>
+  <line x1="41" y1="142" x2="49" y2="142" stroke="#111111" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="68" y="129" font-family="Georgia, serif" font-size="9" fill="#111111" opacity="0.85">HealthFlow</text>
+  <text x="68" y="142" font-family="Georgia, serif" font-size="7.5" fill="#717580">Seed · HealthTech · $500K ask</text>
+  <text x="68" y="153" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.6">Market timing unclear, revisit Q3</text>
+  <rect x="307" y="122" width="55" height="20" rx="10" fill="#111111" fill-opacity="0.05"/>
+  <rect x="307" y="122" width="55" height="20" rx="10" stroke="#111111" stroke-opacity="0.18" stroke-width="0.8"/>
+  <text x="334" y="136" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#717580">REVIEW</text>
 
-  <!-- Analysis circle -->
-  <circle cx="302" cy="118" r="70" fill="white" stroke="#111111" stroke-width="2.5"/>
-  <circle cx="302" cy="118" r="60" fill="none" stroke="#111111" stroke-width="1" opacity="0.13" stroke-dasharray="6 4"/>
-
-  <!-- Large checkmark inside circle -->
-  <path d="M 260 118 L 280 140 L 342 88" stroke="#8B1A2B" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- PASS badge below checkmark -->
-  <rect x="268" y="152" width="68" height="22" rx="4" fill="#FFF0E8" stroke="#8B1A2B" stroke-width="1.5"/>
-  <!-- P A S S as short dashes (letterform suggestion) -->
-  <line x1="278" y1="163" x2="289" y2="163" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-  <line x1="295" y1="163" x2="303" y2="163" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-  <line x1="309" y1="163" x2="317" y2="163" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-  <line x1="323" y1="163" x2="330" y2="163" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-
-  <!-- Bottom-left accent dots -->
-  <circle cx="20" cy="222" r="2.5" fill="#8B1A2B" opacity="0.4"/>
-  <circle cx="12" cy="234" r="1.5" fill="#8B1A2B" opacity="0.28"/>
+  <!-- Row 3: ARCHIVE -->
+  <rect x="22" y="172" width="356" height="52" rx="8" fill="white" stroke="#111111" stroke-opacity="0.07" stroke-width="0.8" opacity="0.65"/>
+  <rect x="36" y="186" width="22" height="26" rx="3" fill="#F7ECEE" opacity="0.6" stroke="#111111" stroke-opacity="0.12" stroke-width="0.8"/>
+  <line x1="41" y1="194" x2="52" y2="194" stroke="#111111" stroke-opacity="0.15" stroke-width="1"/>
+  <line x1="41" y1="199" x2="52" y2="199" stroke="#111111" stroke-opacity="0.10" stroke-width="1"/>
+  <text x="68" y="193" font-family="Georgia, serif" font-size="9" fill="#111111" opacity="0.45">BuildFast</text>
+  <text x="68" y="206" font-family="Georgia, serif" font-size="7.5" fill="#717580" opacity="0.55">Pre-seed · Dev Tools · $250K ask</text>
+  <text x="68" y="217" font-family="Georgia, serif" font-size="7" fill="#717580" opacity="0.40">Saturated space, weak moat</text>
+  <rect x="304" y="184" width="62" height="20" rx="10" fill="#111111" fill-opacity="0.03"/>
+  <text x="335" y="198" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#717580" opacity="0.50">ARCHIVE</text>
 </svg>
