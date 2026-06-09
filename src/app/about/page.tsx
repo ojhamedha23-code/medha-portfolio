@@ -118,7 +118,7 @@ export default function AboutPage() {
               {
                 degree: "MBA, Class of July 2026",
                 school: "INSEAD",
-                location: "Singapore",
+                location: "Singapore & Fontainebleau",
                 date: "2025 – present",
                 summary: "Taught me how to work with, and through, difference. A cohort of 70+ nationalities is not just a stat; it shaped how I frame problems, challenge assumptions, and find solutions that hold up across contexts.",
                 logo: "/images/insead-logo.svg",
@@ -141,8 +141,9 @@ export default function AboutPage() {
                 summary: "Set the technical foundation: how to think rigorously, break down systems, and build things that work.",
                 logo: "/images/vit-logo.png",
                 logoAlt: "VIT",
+                logoCentered: true,
               },
-            ].map(({ degree, school, location, date, summary, logo, logoAlt }) => (
+            ].map(({ degree, school, location, date, summary, logo, logoAlt, logoCentered }) => (
               <div key={school} className="p-5 border border-ink/10 rounded-xl bg-white shadow-card">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                   <div className="flex items-center gap-4">
@@ -154,7 +155,7 @@ export default function AboutPage() {
                         width={80}
                         height={48}
                         unoptimized
-                        className="object-contain object-left w-full h-full"
+                        className={`object-contain w-full h-full ${logoCentered ? "object-center" : "object-left"}`}
                       />
                     </div>
                     <div>
