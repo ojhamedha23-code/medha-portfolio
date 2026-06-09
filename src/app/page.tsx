@@ -1,4 +1,6 @@
 import Hero from "@/components/home/Hero";
+import ProcessSection from "@/components/home/ProcessSection";
+import CareerTimeline from "@/components/home/CareerTimeline";
 import ProjectCard from "@/components/projects/ProjectCard";
 import { projects } from "@/lib/projects";
 import { getAllCaseStudies } from "@/lib/case-studies";
@@ -13,7 +15,10 @@ export default function Home() {
       {/* ── 1. Hero — warm cream ─────────────────────────── */}
       <Hero />
 
-      {/* ── 2. Featured Projects — pure white ────────────── */}
+      {/* ── 2. How I Work ────────────────────────────────── */}
+      <ProcessSection />
+
+      {/* ── 3. Featured Projects — pure white ────────────── */}
       <section className="bg-white border-y border-ink/8">
         <div className="max-w-5xl mx-auto px-6 py-16">
           <div className="flex items-baseline justify-between mb-8">
@@ -85,7 +90,10 @@ export default function Home() {
         </section>
       )}
 
-      {/* ── 4. About strip — blush ───────────────────────── */}
+      {/* ── 5. Career Timeline — paper ───────────────────── */}
+      <CareerTimeline />
+
+      {/* ── 6. About strip — blush ───────────────────────── */}
       <section className="bg-blush border-y border-ink/8">
         <div className="max-w-5xl mx-auto px-6 py-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>

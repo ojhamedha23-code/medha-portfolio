@@ -11,13 +11,12 @@ export default function Hero() {
             Medha Ojha
           </h1>
           <p className="font-sans text-lg text-ink/75 leading-relaxed max-w-md mb-3">
-            I&apos;ve spent 7+ years at the intersection of technology, strategy,
-            and impact — from building AI products to advising organisations
-            across finance and social sectors.
+            Turning ambiguous problems into shipped AI products. Seven years
+            across finance, consulting, and enterprise AI — and currently at
+            INSEAD, where I&apos;m adding the strategic and cross-cultural layer.
           </p>
-          <p className="font-sans text-base text-muted leading-relaxed max-w-md mb-8">
-            Currently doing my MBA at INSEAD while working on the next set of
-            problems.
+          <p className="font-sans text-sm text-muted leading-relaxed max-w-md mb-8">
+            INSEAD MBA · Class of 2026 · Singapore &amp; Fontainebleau
           </p>
           <div className="flex flex-wrap gap-3">
             <Button href="/projects">See my work</Button>
