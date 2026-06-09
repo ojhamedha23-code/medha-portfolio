@@ -33,8 +33,43 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const { meta, content } = data!;
   const isRecruitmentTracker = params.slug === "recruitment-tracker";
   const isAttritionML = params.slug === "hr-attrition-ml";
-  const isConsulting = meta.showInListing === true || meta.showInListing === undefined && !isRecruitmentTracker && !isAttritionML;
+  const isConsulting = !isRecruitmentTracker && !isAttritionML;
 
+  /* ── Recruitment Tracker — dashboard-first layout ────────────── */
+  if (isRecruitmentTracker) {
+    return (
+      <div className="max-w-5xl mx-auto px-6 py-10">
+        {/* Header row: title left, single CTA right */}
+        <div className="flex items-start justify-between gap-6 mb-8">
+          <div>
+            <h1 className="font-serif text-3xl text-ink mb-2">{meta.title}</h1>
+            <p className="font-sans text-sm text-muted max-w-lg leading-relaxed">
+              {meta.summary}
+            </p>
+          </div>
+          <a
+            href="https://medha-job-dashboard.lovable.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 bg-burgundy text-paper text-sm font-sans font-medium rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap"
+          >
+            Visit Live Dashboard ↗
+          </a>
+        </div>
+
+        {/* Full dashboard embed */}
+        <div className="border border-ink/10 rounded-2xl overflow-hidden shadow-card">
+          <iframe
+            src="https://medha-job-dashboard.lovable.app/"
+            className="w-full h-[82vh] min-h-[600px]"
+            title="Recruitment Tracker Dashboard"
+          />
+        </div>
+      </div>
+    );
+  }
+
+  /* ── All other case studies ───────────────────────────────────── */
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
       {/* Back link for consulting case studies */}
@@ -61,42 +96,6 @@ export default async function CaseStudyPage({ params }: PageProps) {
           ))}
         </div>
       </div>
-
-      {/* Download + Preview buttons */}
-      {isRecruitmentTracker && (
-        <div className="flex flex-wrap gap-3 mb-12">
-          <Button
-            href="/recruitment-tracker.html"
-            download="RecruitmentTracker_MedhaOjha.html"
-          >
-            Download Tracker
-          </Button>
-          <Button
-            href="/recruitment-tracker.html"
-            variant="outline"
-            external
-          >
-            Preview Dashboard ↗
-          </Button>
-        </div>
-      )}
-
-      {/* Iframe preview */}
-      {isRecruitmentTracker && (
-        <div className="mb-12">
-          <h2 className="font-serif text-2xl text-ink mb-4">Live Preview</h2>
-          <div className="border border-muted/20 rounded-xl overflow-hidden shadow-sm">
-            <iframe
-              src="/recruitment-tracker.html"
-              className="w-full h-[700px]"
-              title="Recruitment Tracker Preview"
-            />
-          </div>
-          <p className="text-xs font-sans text-muted mt-2 text-center">
-            Live preview — download to use it fully in your browser.
-          </p>
-        </div>
-      )}
 
       {/* GitHub button for ML project */}
       {isAttritionML && (
