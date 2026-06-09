@@ -1,5 +1,6 @@
 import Button from "@/components/ui/Button";
 import SketchIllustration from "@/components/illustrations/SketchIllustration";
+import Image from "next/image";
 
 export const metadata = {
   title: "About — Medha Ojha",
@@ -19,10 +20,9 @@ export default function AboutPage() {
         <div className="flex-1">
           <h1 className="font-serif text-4xl text-ink tracking-tight mb-5">About me</h1>
           <p className="font-sans text-lg text-ink/75 leading-relaxed mb-4 max-w-xl">
-            I sit at the intersection of technology, people management, and
-            strategy, and I&apos;ve built that combination deliberately across
-            three very different industries: finance, consulting, and AI
-            product.
+            I bring experience of working as a product manager and consulting
+            across three very different industries: financial markets,
+            consulting, and B2B AI-native products.
           </p>
           <p className="font-sans text-base text-muted leading-relaxed max-w-xl">
             Pivots are not a barrier for me. They&apos;re how I&apos;ve
@@ -39,54 +39,9 @@ export default function AboutPage() {
       {/* ── Main content ─────────────────────────────────── */}
       <div className="max-w-5xl mx-auto px-6 py-16">
 
-        {/* Education */}
+        {/* Expertise (formerly "What I do") */}
         <section className="mb-16">
-          <h2 className="font-serif text-2xl text-ink mb-6">Education</h2>
-          <div className="flex flex-col gap-4">
-            {[
-              {
-                degree: "MBA, Class of July 2026",
-                school: "INSEAD",
-                location: "Singapore",
-                date: "2025 – present",
-                summary: "Taught me how to work with — and through — difference. A cohort of 70+ nationalities is not just a stat; it shaped how I frame problems, challenge assumptions, and find solutions that hold up across contexts.",
-              },
-              {
-                degree: "Post Graduate Diploma in Liberal Arts Education",
-                school: "Ashoka University · Young India Fellowship",
-                location: "Sonipat, India",
-                date: "2019 – 2020",
-                summary: "Turned me from an engineer into an operator. Stepping into a completely new field and doing real implementation work made me far more comfortable with ambiguity, change, and figuring things out from scratch.",
-              },
-              {
-                degree: "B.Tech, Electrical & Electronics Engineering",
-                school: "Vellore Institute of Technology",
-                location: "Chennai, India",
-                date: "2013 – 2017",
-                summary: "Set the technical foundation — how to think rigorously, break down systems, and build things that work.",
-              },
-            ].map(({ degree, school, location, date, summary }) => (
-              <div key={school} className="p-5 border border-ink/10 rounded-xl bg-white shadow-card">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
-                  <div>
-                    <h3 className="font-serif text-lg text-ink">{degree}</h3>
-                    <p className="font-sans text-sm font-medium text-burgundy mt-0.5">
-                      {school} · {location}
-                    </p>
-                  </div>
-                  <span className="font-sans text-xs text-muted whitespace-nowrap mt-1">{date}</span>
-                </div>
-                <p className="font-sans text-sm text-muted leading-relaxed mt-3 pt-3 border-t border-ink/8">
-                  {summary}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* What I do */}
-        <section className="mb-16">
-          <h2 className="font-serif text-2xl text-ink mb-6">What I do</h2>
+          <h2 className="font-serif text-2xl text-ink mb-6">Expertise</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               {
@@ -105,6 +60,76 @@ export default function AboutPage() {
               <div key={title} className="p-5 border border-ink/10 rounded-xl bg-white shadow-card">
                 <h3 className="font-serif text-lg text-ink mb-2">{title}</h3>
                 <p className="font-sans text-sm text-muted leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Education */}
+        <section className="mb-16">
+          <h2 className="font-serif text-2xl text-ink mb-6">Education</h2>
+          <div className="flex flex-col gap-4">
+            {[
+              {
+                degree: "MBA, Class of July 2026",
+                school: "INSEAD",
+                location: "Singapore",
+                date: "2025 – present",
+                summary: "Taught me how to work with — and through — difference. A cohort of 70+ nationalities is not just a stat; it shaped how I frame problems, challenge assumptions, and find solutions that hold up across contexts.",
+                logo: "/images/insead-logo.svg",
+                logoAlt: "INSEAD",
+                logoWidth: 120,
+                logoHeight: 48,
+              },
+              {
+                degree: "Post Graduate Diploma in Liberal Arts Education",
+                school: "Ashoka University · Young India Fellowship",
+                location: "Sonipat, India",
+                date: "2019 – 2020",
+                summary: "Turned me from an engineer into an operator. Stepping into a completely new field and doing real implementation work made me far more comfortable with ambiguity, change, and figuring things out from scratch.",
+                logo: "/images/ashoka-logo.png",
+                logoAlt: "Ashoka University",
+                logoWidth: 120,
+                logoHeight: 50,
+              },
+              {
+                degree: "B.Tech, Electrical & Electronics Engineering",
+                school: "Vellore Institute of Technology",
+                location: "Chennai, India",
+                date: "2013 – 2017",
+                summary: "Set the technical foundation — how to think rigorously, break down systems, and build things that work.",
+                logo: "/images/vit-logo.png",
+                logoAlt: "VIT",
+                logoWidth: 48,
+                logoHeight: 48,
+              },
+            ].map(({ degree, school, location, date, summary, logo, logoAlt, logoWidth, logoHeight }) => (
+              <div key={school} className="p-5 border border-ink/10 rounded-xl bg-white shadow-card">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                  <div className="flex items-start gap-4">
+                    {/* Logo */}
+                    <div className="flex-shrink-0 flex items-center" style={{ width: logoWidth, height: logoHeight }}>
+                      <Image
+                        src={logo}
+                        alt={logoAlt}
+                        width={logoWidth}
+                        height={logoHeight}
+                        unoptimized
+                        className="object-contain object-left w-full h-full"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-lg text-ink">{degree}</h3>
+                      <p className="font-sans text-sm font-medium text-burgundy mt-0.5">
+                        {school} · {location}
+                      </p>
+                    </div>
+                  </div>
+                  <span className="font-sans text-xs text-muted whitespace-nowrap mt-1 sm:ml-4">{date}</span>
+                </div>
+                <p className="font-sans text-sm text-muted leading-relaxed mt-3 pt-3 border-t border-ink/8">
+                  {summary}
+                </p>
               </div>
             ))}
           </div>
