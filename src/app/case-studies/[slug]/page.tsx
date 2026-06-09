@@ -63,9 +63,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </div>
 
         {/* Dashboard snapshot */}
-        <div className="mb-12 border border-ink/10 rounded-2xl overflow-hidden shadow-card bg-blush">
+        <div className="mb-12 border border-ink/10 rounded-2xl overflow-hidden shadow-card">
           <img
-            src="/images/recruitment-tracker-thumb.svg"
+            src="/images/recruitment-tracker-snapshot.png"
             alt="Recruitment Tracker Dashboard"
             className="w-full h-auto"
           />

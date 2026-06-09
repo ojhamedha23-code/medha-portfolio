@@ -1,33 +1,113 @@
 ---
 title: "Recruitment Tracker"
-summary: "A beautifully designed job application dashboard — built to bring clarity and calm to the job search process."
+summary: "An end-to-end job search system — automated sourcing, AI company research, and tailored CV generation — built to replace 2+ hours of daily manual work with 10 minutes."
 date: "2026-03-01"
-tags: ["tool", "productivity", "design"]
+context: "Personal Project · Product Case Study · March 2026"
+tags: ["AI", "Automation", "Claude API", "Lovable", "Google Apps Script"]
 showInListing: false
 ---
 
-## The problem
+## Problem & Solution
 
-Job searching is chaotic. Applications go into a black hole, follow-up dates get forgotten, and it's hard to get a clear picture of where you stand across 20+ companies at once.
+Job searching at MBA level is a full-time job on top of coursework. Before building this, the daily routine looked like:
 
-Spreadsheets technically work — but they're ugly, hard to scan, and offer no structure for the specific workflow of a job search.
+**Before — 2+ hours/day**
+- Manual company research per role — 20 minutes each
+- Rewriting CV for every JD from scratch — 45 minutes
+- No centralised tracking — roles lost across browser tabs
+- No salary benchmark before entering conversations
+- Generic CV sent regardless of role or company context
 
-## What I built
+**After Recruitment Tracker — 10 minutes/day**
+- AI company brief auto-generated on shortlist — 30 seconds
+- JD-tailored CV saved to Google Drive — 60 seconds
+- Pipeline view: New → Shortlisted → Applied → Interview
+- Salary estimate surfaced before the first conversation
+- CV rewritten around top 3 JD themes by Claude API
 
-A single-page HTML dashboard that tracks every application from first contact to offer. It's designed to be beautiful enough that you actually want to open it every day.
+---
 
-Key features:
-- Track status across every stage (applied, phone screen, interview, offer, rejected)
-- Add notes, deadlines, and contacts per company
-- Clean, readable layout that doesn't feel like a spreadsheet
-- Zero setup — download and open in any browser
+## The Solution — 3 Layers
 
-## Design decisions
+**Layer 1 — Discovery: Automated Job Sourcing**
 
-The tracker uses a navy, burgundy, and gold palette to feel professional rather than clinical. Typography is set in Playfair Display and Lato — editorial and readable.
+LinkedIn alert emails parsed twice daily via Google Apps Script. Extracts title, company, location, and alumni count — deduplicated across 8 searches. 15–21 roles sourced daily, zero manual effort.
 
-Everything is a single self-contained HTML file. No accounts, no sync, no cloud. Your data stays on your machine.
+**Layer 2 — Intelligence: AI Research Assistant**
 
-## Download it
+On shortlist, Claude API generates a 4-point company brief: product overview, funding stage, recent news, culture signal and salary estimate. Replaces 20 minutes of manual research per role.
 
-Use the button above to download the tracker. Open it in any browser and you're ready to go.
+**Layer 3 — Application: CV Modifier**
+
+Claude reads the JD, identifies its top 3 themes, and rewrites CV bullets to foreground the most relevant experience — without fabrication. Formatted Google Doc delivered in 60 seconds.
+
+---
+
+## Workflow
+
+1. **Alert Email Arrives** — LinkedIn job alert hits Gmail
+2. **Auto-Parsed & Stored** — Apps Script extracts and deduplicates into Google Sheets
+3. **Review in Dashboard** — Lovable web app shows the full pipeline
+4. **Shortlist a Role** — one click, triggers the AI layer
+5. **Company Intel Generated** — Claude API returns a 4-point brief in 30 seconds
+6. **CV Tailored to Drive** — Claude rewrites CV bullets, Google Doc ready in 60 seconds
+
+Steps 1–2 are fully automated. Step 4 is the human decision point. Steps 5–6 are AI-powered.
+
+---
+
+## How It Was Built
+
+| Layer | Tool | Rationale |
+|---|---|---|
+| Backend | Google Apps Script | Free, serverless, runs on Google's infrastructure |
+| Data source | LinkedIn Email Alerts | Safe — no scraping, zero account risk |
+| Database | Google Sheets | Free, auditable, API-accessible |
+| Intelligence | Claude API (Sonnet) | Company intel + CV tailoring via prompts |
+| Frontend | Lovable | No-code React, built via conversational prompting |
+| CV output | Google Drive Docs | Formatted, downloadable as Word instantly |
+
+---
+
+## Results
+
+- **15–21** roles sourced per day
+- **30 seconds** to generate company intel
+- **60 seconds** to produce a tailored CV to Google Drive
+- **~$10/month** total running cost
+
+---
+
+## Key Product Decisions
+
+**Decision 01 — Email parsing over direct scraping**
+
+LinkedIn blocks scrapers and risks account bans. Parsing alert emails is safe, legal, and reliable — with an accepted tradeoff of 6 roles per email vs 30+ in the full search.
+
+**Decision 02 — Human-in-the-loop shortlisting**
+
+The system surfaces roles but never auto-applies. Every shortlist decision stays with the user — quality of application matters more than volume at MBA recruiting level.
+
+**Decision 03 — On-demand intel, not batch enrichment**
+
+Claude API fires only on shortlisted roles (~$0.02/company) vs all 21 daily roles (~$0.42/day). Cost and analytical attention aligned to actual intent.
+
+**Decision 04 — Google Docs over spreadsheet cells**
+
+Initial CVs stored as text in Sheets — unusable in practice. Switched to formatted Google Docs per tailored CV, downloadable as Word instantly. Small change, significant UX lift.
+
+---
+
+## Honest Tradeoffs & V2 Plan
+
+**V1 — Current Limitations**
+- Gmail dependency — fragile if LinkedIn changes email format
+- Google Sheets — 10MB cap, limited query capability
+- 6 roles per email vs 30+ in full LinkedIn search results
+- CV formatting requires minor manual cleanup post-generation
+
+**V2 — Proper Engineering Stack**
+- Puppeteer scraper — direct LinkedIn access, no email dependency
+- Supabase (PostgreSQL) — real database with indexed queries
+- Full search result ingestion, not just email previews
+- Automated PDF generation with precise, consistent formatting
