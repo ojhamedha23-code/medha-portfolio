@@ -1,0 +1,92 @@
+---
+title: "Building Adya's AI Voice Agent — Zero to Enterprise"
+summary: "How I built a Voice AI platform from scratch as the founding PM — from customer discovery and product definition to custom agent deployments and enterprise sales. The product shipped to 15+ enterprise clients, with 4 converting to paying pilots."
+date: "2025-01-01"
+tags: ["Voice AI", "Product Management", "0-to-1", "Enterprise", "AI"]
+showInListing: true
+context: "Adya · AI Voice Agent · Product Manager"
+---
+
+## The Problem
+
+Customer support in India runs almost entirely on human agents. For small and medium businesses, this creates a compounding set of problems that are hard to fix with headcount alone:
+
+- **Cost** — Hiring, training, and managing a support team is expensive at every scale. Agent attrition makes it worse.
+- **Coverage** — Human agents work shifts. Customers don't. Calls that come in at night, on weekends, or during peak hours either go unanswered or hit long queues.
+- **Consistency** — The quality of a customer interaction depends on which agent picks up, how they're feeling, and how well they've been trained. That variability is invisible until it's already cost you a customer.
+- **Speed** — A customer with a billing question or delivery issue wants an answer in seconds, not after navigating an IVR tree and waiting on hold.
+
+The opportunity was clear: a voice AI agent that could handle these calls around the clock — in natural, human-like Indian English and Hinglish — would directly address all four.
+
+---
+
+## What I Built
+
+Adya's AI Voice Agent (the platform we internally called V2V — Voice-to-Voice) is a product that lets businesses deploy custom AI agents for inbound and outbound phone calls. The agent can hold full, context-aware conversations — qualifying leads, resolving support queries, scheduling appointments, gathering feedback, and routing to a human when needed.
+
+The customer-facing platform I designed and shipped included:
+
+**Call Agent Configuration**
+Every business has a different script, tone, and set of tasks. I built the system for creating custom agent personas — defining the agent's voice, language, call flow logic, and escalation rules. A logistics company's agent handles delivery rescheduling. A clinic's agent handles appointment booking. The configuration layer made this reusable without engineering involvement for each new client.
+
+**Campaign Management**
+For outbound use cases — follow-ups, reminders, lead qualification — we built a campaigns module. Businesses could upload contact lists, assign an agent configuration, schedule a campaign, and get structured results back. Internally, this was the feature that most directly replaced repetitive human outbound calling.
+
+**Supervisor Dashboard**
+Managers needed visibility. I designed a real-time dashboard showing active calls, call status, and quality indicators — giving supervisors the ability to monitor live conversations and intervene when needed. Post-call, the platform surfaces AI-generated summaries and sentiment analysis for every call, turning a conversation into a structured record without any manual note-taking.
+
+**Contacts and Groups**
+To make campaigns repeatable and targetable, we built a contact management layer — with groups for segmentation and reuse across multiple campaigns.
+
+---
+
+## My Role
+
+I joined Adya as the product manager for this product and built it from zero to one.
+
+That meant starting with no existing product, no defined spec, and no prior customer reference point. My work spanned the full PM surface:
+
+**Customer Discovery**
+I spoke with SMBs across sectors — retail, logistics, clinics, financial services — to map out where phone calls were creating the most friction. The pattern that emerged: high-volume, repetitive calls (order status, appointment reminders, payment follow-ups) were consuming the most agent time and were the most automatable.
+
+**Product Definition**
+I translated customer conversations into a product architecture — what the platform needed to do, what customisation options customers needed, and what the minimum viable version looked like for a first deployment.
+
+**UI Design**
+I defined the user interface for the customer-facing dashboard — how call agents are configured, how campaigns are set up and tracked, how supervisors monitor live operations, and how post-call analytics are surfaced.
+
+**Custom Agent Deployments**
+For each new enterprise client, I worked on the agent configuration — adapting call flows, scripts, and escalation logic to fit their specific use case. This was hands-on product work that also served as the primary touchpoint for customer onboarding.
+
+**Technical Demos**
+I ran product demonstrations directly with enterprise prospects — walking through the platform, showing live call examples, and handling technical questions. Being the PM who could also do the demo removed a handoff that would have slowed the sales cycle down significantly.
+
+**Iteration**
+Every client deployment surfaced something. I managed the feedback loop across versions — prioritising what changed the call quality, what reduced setup time, and what unlocked new use cases.
+
+---
+
+## Outcomes
+
+| Metric | Result |
+|--------|--------|
+| Enterprise clients shipped to | 15+ |
+| Paying pilots converted | 4 |
+| Availability vs. human agents | 24/7 vs. business hours only |
+| Primary use cases deployed | Inbound support, outbound campaigns, lead qualification, appointment booking |
+
+The paying pilots represented the hardest validation in B2B enterprise sales: a company willing to commit budget to a new AI product in a category that didn't exist in their vendor landscape six months earlier.
+
+---
+
+## What the Product Does Today
+
+The platform handles the full call lifecycle:
+
+- **Inbound calls** — AI agent picks up, identifies the customer's intent, resolves the query or routes to the right team
+- **Outbound campaigns** — Automated calls to contact lists with real-time tracking and structured outcomes per call
+- **AI call summaries** — Every call produces a written summary automatically, no agent note-taking required
+- **Sentiment analysis** — Post-call sentiment flagging surfaces calls that need follow-up or human review
+- **Supervisor view** — Live monitoring of active calls with quality indicators and the ability to intervene
+
+The product documentation is available at [docs.adya.ai](https://docs.adya.ai/s/home/doc/ai-voice-agent-DaIEBcRN4A), and Adya's own [product update announcement](https://www.linkedin.com/posts/adyadotai_ai-voiceai-callautomation-activity-7363224237387468800-qYHu) shows the platform in production.

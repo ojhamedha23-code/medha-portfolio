@@ -9,7 +9,7 @@ export const projects: Project[] = [
     tags: ["Voice AI", "Product Management", "0-to-1"],
     status: "live",
     websiteUrl: "https://docs.adya.ai/s/home/doc/ai-voice-agent-DaIEBcRN4A",
-    socialProofUrl: "https://www.linkedin.com/posts/adyadotai_ai-voiceai-callautomation-activity-7363224237387468800-qYHu",
+    caseStudySlug: "voice-ai-agent",
     previewImage: "/images/voice-agent-thumb.svg",
     featured: true,
   },

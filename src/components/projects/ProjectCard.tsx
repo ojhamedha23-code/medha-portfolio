@@ -74,16 +74,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           )}
 
           <div className="flex items-center gap-4">
-            {project.socialProofUrl && (
-              <a
-                href={project.socialProofUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-sans text-muted hover:text-ink transition-colors"
-              >
-                LinkedIn post →
-              </a>
-            )}
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
