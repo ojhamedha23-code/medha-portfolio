@@ -5,6 +5,7 @@ export interface Project {
   tags: string[];
   status: "live" | "download";
   websiteUrl?: string;
+  socialProofUrl?: string;
   liveUrl?: string;
   livePreviewUrl?: string;
   downloadFile?: string;
