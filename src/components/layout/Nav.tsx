@@ -22,7 +22,7 @@ export default function Nav() {
           href="/"
           className="font-serif text-base tracking-tight text-ink hover:text-burgundy transition-colors"
         >
-          Medha Ojha
+          MO
         </Link>
 
         {/* Desktop links */}
