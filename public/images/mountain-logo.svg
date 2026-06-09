@@ -1,0 +1,48 @@
+<svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Main mountain silhouette -->
+  <path d="
+    M 0,300
+    L 18,262 L 28,275 L 42,242 L 55,258
+    L 78,198 L 92,218 L 88,224
+    L 108,172 L 102,182
+    L 128,118 L 122,132
+    L 140,82 L 134,96
+    L 158,18
+    L 170,50 L 162,64
+    L 176,44 L 188,78
+    L 182,88 L 198,56 L 208,92
+    L 218,130
+    L 228,108 L 240,86 L 252,68
+    L 265,95 L 258,108
+    L 282,132 L 275,145 L 295,118 L 308,150
+    L 322,135 L 338,158 L 348,145 L 368,175
+    L 385,162 L 408,198 L 424,185
+    L 448,215 L 462,208 L 482,238 L 498,228 L 520,268
+    L 520,300
+    Z
+  " fill="#8B1A2B"/>
+
+  <!-- Left snow-face highlight on main peak (lighter inner triangle) -->
+  <path d="
+    M 140,82 L 134,96 L 122,132 L 108,172 L 138,130 L 148,108 L 158,18
+    Z
+  " fill="#C0607A"/>
+
+  <!-- Right snow-face highlight on main peak -->
+  <path d="
+    M 158,18 L 170,50 L 162,64 L 176,44 L 188,78 L 218,130 L 195,88
+    Z
+  " fill="#C0607A"/>
+
+  <!-- Small left-peak inner highlight -->
+  <path d="
+    M 78,198 L 92,218 L 108,172 L 95,185
+    Z
+  " fill="#C0607A"/>
+
+  <!-- Small right-peak inner highlight -->
+  <path d="
+    M 252,68 L 265,95 L 258,108 L 282,132 L 268,98
+    Z
+  " fill="#C0607A"/>
+</svg>

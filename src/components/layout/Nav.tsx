@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -19,20 +20,14 @@ export default function Nav() {
     <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur-md border-b border-ink/8">
       <nav className="max-w-5xl mx-auto px-6 py-0 flex items-center justify-between h-14">
         <Link href="/" aria-label="Home" className="hover:opacity-75 transition-opacity">
-          <svg
-            width="36"
-            height="28"
-            viewBox="0 0 36 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            {/* Mountain range — two angular peaks, solid fill */}
-            <path
-              d="M0 27 L10 6 L15 13 L20 3 L28 16 L32 10 L36 27 Z"
-              fill="#8B1A2B"
-            />
-          </svg>
+          <Image
+            src="/images/mountain-logo.svg"
+            alt="Medha Ojha"
+            width={52}
+            height={30}
+            unoptimized
+            priority
+          />
         </Link>
 
         {/* Desktop links */}
