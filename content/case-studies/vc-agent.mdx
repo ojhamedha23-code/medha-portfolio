@@ -6,80 +6,192 @@ tags: ["Generative AI", "Multi-Agent", "Python", "Claude API", "INSEAD"]
 previewImage: "/images/vc-agent-thumb.svg"
 showInListing: false
 context: "INSEAD MBA · Generative AI for Business · Group Project"
+liveUrl: "https://insidersden.vercel.app/"
 ---
 
 ## The Problem
 
-Early-stage VCs review **2,500–5,000 pitch decks** to make just **5–10 investments**. That's a brutal funnel — and most of the filtering happens in minutes, by tired analysts working through a pile.
+Early-stage VCs screen **2,500–5,000 pitch decks** to make just **5–10 investments** per year — a brutal funnel where most decisions happen in minutes, by tired analysts working through a pile.
 
 The cost of getting it wrong goes both ways:
 
-- **False negatives** — great startups buried in the pile. Missed unicorns that define fund returns.
-- **False positives** — "vibe-heavy" decisions that drain time and capital on weak fundamentals.
+- **False negatives (missed winners)** — Great startups get overlooked due to analyst fatigue, noise, or a weak deck design. Missing the next unicorn can define a fund's returns.
+- **False positives (wasted time / bad bets)** — "Vibe-heavy" decisions that skip weak fundamentals and red flags drain time and capital.
 
-Solo GPs and emerging fund managers feel this most acutely. They're running lean teams with deal flow that rivals much larger funds, and every hour spent screening a bad deck is an hour not spent with a founder who deserves attention.
+Three structural forces make this worse:
+1. **Due diligence demand** — More founders than ever are pitching, and solo GPs are operating with even leaner teams.
+2. **Asymmetric risk** — One missed unicorn or one bad investment can define a fund's returns.
+3. **Inconsistent judgement** — Human analysts apply different standards to deck #1 vs deck #47 on a Friday afternoon. An agent doesn't.
+
+The VC process has 6 stages: Initial Screening → First Meeting/Call → Internal Due Diligence → Partnership Meeting → Term Sheet Negotiation → Final Diligence & Legal Closing. **We focused exclusively on Stage 1** — where most decks are rejected, and where consistent, thesis-aligned filtering has the highest leverage.
+
+---
 
 ## What We Built
 
-A **multi-agent AI pipeline** that automates the initial pitch deck screening workflow — from raw PDF upload to a structured investment memo with a PASS / REVIEW / ARCHIVE decision.
+**Insiders Den** — a multi-agent AI pipeline that automates the initial pitch deck screening workflow, from raw PDF upload to a structured investment memo with a PASS / REVIEW / ARCHIVE decision.
 
-The system handles the full workflow that currently takes analysts 1–3 days, and produces a consistent, thesis-aligned output every time.
+A VC analyst uploads a pitch deck PDF. The fund's investment thesis is pre-configured (target sectors, geographies, stage, ARR targets, and deal-breaker rules). The pipeline does the rest in minutes.
 
-### Agent Architecture
+### Tech Stack
 
-The pipeline uses four agents running in a coordinated sequence:
+| Layer | Tool | Hosting |
+|---|---|---|
+| Frontend | Next.js | Vercel |
+| Backend | FastAPI (Python) | Render |
+| Database | PostgreSQL | Supabase |
+| Agents 1–3 | Claude Sonnet 4.6 | Anthropic API |
+| Agent 4 | Claude Opus 4.6 | Anthropic API |
+| Web Search | Tavily API | — |
+| Email | Resend API | — |
 
-| Agent | Role |
-|-------|------|
-| Agent 1 — Parser | Extracts content from pitch decks (text + vision fallback) |
-| Agent 2 — Analyst | Evaluates thesis fit, team, market, and deal-breaker flags |
-| Agent 3 — Fact-Checker | Cross-references startup claims against trusted web sources |
-| Agent 4 — Memo Writer | Synthesises findings into a structured investment memo |
+---
 
-Agents 2 and 3 run **in parallel** to minimise processing time. A post-processing decision engine then applies Agent 2's deal-breaker vetoes to Agent 3's output before the final memo is generated.
+## The 4-Agent Pipeline
 
-### Technical Challenges Solved
+### Agent 1 — Claim Extractor *(Claude Sonnet 4.6)*
 
-**Image-heavy PDFs** — Most pitch decks are design-tool exports, not text-native PDFs. We built a two-pass parser: first attempts `pdfplumber` extraction. If a slide returns fewer than 50 characters, it's flagged as image-based and routed to Claude's Vision API to read the slide visually.
+Reads every slide of the pitch deck and extracts structured data — TAM, ARR, team background, funding stage, geography, product description, and customer traction. Flags fields where information is missing or ambiguous.
 
-**Fact-check noise** — Open web search returns opinion-based, low-quality results that can incorrectly contradict legitimate startup claims. We domain-whitelisted Tavily to trusted sources only and introduced a 4-level verification status: `verified / contradicted / unverified / not_found`.
+**Output:** `ClaimsJSON` — a structured object passed to Agents 2 and 3.
 
-**LLM non-determinism** — Claude uses probabilistic sampling by default, meaning the same deck uploaded twice could produce different scores. We set `temperature=0` across all agents and added file-hash deduplication — if the same PDF is uploaded again, the pipeline is skipped and the cached result returned instantly.
+---
 
-**Parallel agent coordination** — Agent 3's REVIEW/PASS/ARCHIVE decision needed to be overridden by Agent 2's deal-breaker flags. We resolved this with a post-processing engine that applies the veto logic after both agents complete.
+### Agent 2 — Fact Checker *(Claude Sonnet 4.6, runs in parallel)*
+
+Takes `ClaimsJSON` and searches trusted external sources (Crunchbase, Statista, industry databases) to validate the startup's claims. Assigns each claim one of four verification statuses:
+
+- `verified` — corroborated by a trusted source
+- `contradicted` — directly contradicted by evidence
+- `unverified` — searched but no relevant result found
+- `not_found` — insufficient data to assess
+
+Also detects the three hard **deal-breakers** configured into the fund thesis:
+1. No pre-product / pre-revenue
+2. Hardware business model
+3. D2C / consumer products
+
+**Output:** `FactCheckResult` — claim statuses + deal-breaker flags. Agent 2 holds **veto power** over Agent 3.
+
+---
+
+### Agent 3 — Thesis Scorer *(Claude Sonnet 4.6, runs in parallel)*
+
+Compares `ClaimsJSON` against the fund's pre-configured investment thesis across four scored dimensions:
+
+| Dimension | What it measures |
+|---|---|
+| Sector Fit | Does the business model match target sectors (B2B SaaS, Enterprise, Deep Tech)? |
+| Geography Fit | Is HQ and primary traction in target markets (Southeast Asia)? |
+| Stage Fit | Is the round Pre-seed, Seed, or Series A/B as expected? |
+| Financial Traction (ARR) | Does ARR evidence support a credible path to $1M ARR in 12 months? |
+
+Each dimension scored 0–100%. Confidence levels adjust based on missing data points (0–1 missing: High confidence; 2–3: Medium; 4+: Low).
+
+**Bonus points** awarded for: prior institutional/renowned VC backers, clear path to profitability within the round, and repeat/serial founders.
+
+Produces a **preliminary REVIEW / PASS / ARCHIVE** decision — subject to Agent 2's veto.
+
+**Output:** `ThesisFitResult` — dimension scores, overall fit %, and preliminary decision.
+
+---
+
+### Decision Engine
+
+After Agents 2 and 3 complete in parallel, a post-processing engine applies Agent 2's deal-breaker veto to Agent 3's output:
+
+| Thesis Fit | Deal Breaker Triggered? | Final Decision |
+|---|---|---|
+| ≥ 50% | No | **REVIEW** |
+| < 50% | No | **PASS** |
+| ≥ 75% | Yes | **ARCHIVE** |
+| < 75% | Yes | **PASS** |
+
+---
+
+### Agent 4 — Memo Drafter *(Claude Opus 4.6, triggered only for REVIEW)*
+
+Only fires when the Decision Engine returns REVIEW — avoiding unnecessary API cost on decks that won't proceed. Synthesises all prior outputs (ClaimsJSON + FactCheckResult + ThesisFitResult) and writes a full structured investment memo with sections covering Business Summary, Market, Team, Traction, Thesis Fit, Fact-Check Findings, and Recommendation.
+
+**Output:** `InvestmentMemo` — displayed in the web app and emailed to the analyst via Resend API. All deals stored in PostgreSQL.
+
+---
+
+## Technical Challenges
+
+**1. Image-Heavy PDFs**
+
+Most pitch decks are Keynote or Figma exports — not text-native PDFs. Standard text extraction returns empty strings for these slides, causing Agent 1 to miss critical data.
+
+*Mitigation:* Built a two-pass parser. First attempts `pdfplumber` text extraction. If a slide returns fewer than 50 characters, it's flagged as image-based and routed to Claude's Vision API, which reads the slide visually.
+
+---
+
+**2. Fact-Check Noise**
+
+Open web search returns opinion-based, low-quality results that can incorrectly contradict legitimate startup claims — creating false negatives on good deals.
+
+*Mitigation:* Tavily search is domain-whitelisted to trusted sources only (Crunchbase, Statista, sector databases). Introduced the 4-level verification status system (`verified / contradicted / unverified / not_found`) to avoid treating "no data found" as a contradiction.
+
+---
+
+**3. Parallel Agent Coordination**
+
+Agents 2 and 3 run in parallel to reduce processing time, but Agent 3's REVIEW/PASS/ARCHIVE decision needed to be overridden by Agent 2's deal-breaker flags — which wouldn't exist yet during parallel execution.
+
+*Mitigation:* Agent 3 runs with an empty placeholder for deal-breakers during parallel execution. After both agents complete, the post-processing Decision Engine applies Agent 2's veto logic to produce the final decision.
+
+---
+
+**4. LLM Non-Determinism**
+
+Claude uses probabilistic sampling by default — the same deck uploaded twice could produce different thesis fit scores, making the tool unreliable for repeated use.
+
+*Mitigation:* Set `temperature=0` across all four agents. Added file-hash deduplication — if the same PDF is uploaded again, the pipeline is skipped entirely and the cached result returned instantly.
+
+---
 
 ## Target Market
 
-We designed the go-to-market around the **highest-pain, fastest-adoption** segments first:
+Primary focus: **Southeast Asia** — ecosystem is maturing, deal flow is growing fast, most funds are still small teams (bandwidth problem is acute), and the region is more open to new tooling.
 
-1. **Emerging fund managers & solo GPs** — Small teams, high deal flow, most acutely feel the bandwidth problem. Primary target.
-2. **Mid-sized funds ($50M–$500M AUM)** — Use as a triage supplement before human review.
-3. **Accelerators & incubators** — Y Combinator, Antler, 500 Global review hundreds of applications per cohort. Same bottleneck, different context.
-4. **Corporate venture arms** — Process-driven and open to tooling (e.g. Singtel Innov8).
+**Segment priority:**
+1. **Emerging fund managers & solo GPs** — Highest pain, fastest adoption. Small teams running the same deal flow volume as larger funds.
+2. **Mid-sized funds ($50M–$500M AUM)** — Use as an analyst triage supplement before human review.
+3. **Corporate venture arms** — Process-driven and open to tooling (e.g. Singtel Innov8).
+4. **Accelerators & incubators** — Y Combinator, Antler, 500 Global review hundreds of applications per cohort. Same bottleneck, different context.
+5. **Family offices moving into venture** — Less experienced teams that need structured frameworks most.
+6. **Angel investors** — Very lean or no team. Maximum leverage per decision.
 
-## Competitive Positioning
+---
 
-Two categories of competition — neither solves the full workflow:
+## Competitive Landscape
 
-**Direct AI-native competitors** (Hebbia, Harmonic, DeckMatch) — Powerful analysis but not purpose-built for end-to-end VC screening.
+**Direct agentic competitors** (Hebbia, Harmonic, DeckMatch) — powerful analysis capabilities, but not purpose-built for VC screening end-to-end. Strong at analysis; not optimised for the full workflow.
 
-**Data giants adding AI features** (PitchBook, Affinity) — Rich data and distribution, but AI features are shallow additions to prevent platform leakage, not native to the decision workflow.
+**Data giants adding AI features** (PitchBook, Crunchbase, AlphaSense, Affinity, DealCloud) — rich data and distribution, but AI features are shallow additions built to prevent platform leakage, not native to the decision workflow.
 
-Our gap: the only tool built **exclusively for AI-native screening end-to-end** — from raw deck to investment memo.
+**Our gap:** The only tool built exclusively for AI-native deal screening end-to-end — from raw deck to investment memo, with thesis alignment built in from the start.
+
+---
 
 ## Impact
 
 | Stage | Before | After |
-|-------|--------|-------|
+|---|---|---|
 | Initial Screening | Manual, inconsistent, high volume | Automated, thesis-aligned, consistent |
 | First Meetings | Low context, noise-heavy | Higher quality, better prepared |
-| Internal Diligence | Analysts spread thin | Time focused on the right deals |
+| Internal Due Diligence | Analysts spread thin | Time focused on the right deals |
 | Partnership Meeting | Variable conviction | Higher conviction, better use of partner time |
+| Term Sheet | Slower cycles | Stronger terms, faster negotiation |
+| Final Closing | Surprises and delays | Smoother diligence, fewer surprises |
+
+---
 
 ## What's Next
 
-- **Deeper thesis learning** — Model learns from past memos and investment decisions to capture implicit preferences
-- **Multi-user collaboration** — Role-based access (Partner / Associate / Analyst), deal annotations, @mention teammates
-- **VDR integration for DD** — Expand from pitch deck to full data room documents (financials, cap table, GTM contracts)
-- **CRM-style deal pipeline** — Track deals across stages with personalised founder outreach
-- **Proactive deal sourcing** — Flag thesis-matching companies before they formally raise, via LinkedIn hiring signals and Crunchbase tracking
+1. **Deeper thesis learning** — Model learns from past memos and investment decisions to capture implicit preferences the firm has developed over time — not just the explicit thesis document.
+2. **Multi-user & team collaboration** — Role-based access (Partner / Associate / Analyst), deal annotations, @mention teammates for second opinions.
+3. **VDR check for DD assistant** — Expand from pitch deck to full data room documents: business plans, financial models, GTM contracts, cap tables.
+4. **CRM-style deal pipeline** — Pipeline dashboard by stage, personalised founder outreach, and a feedback loop from users on memo quality.
+5. **Proactive deal sourcing** — Flag thesis-matching companies before they formally raise, by tracking LinkedIn hiring signals, Crunchbase activity, and PitchBook data.

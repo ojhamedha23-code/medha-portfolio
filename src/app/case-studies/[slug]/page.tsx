@@ -91,16 +91,30 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
       {/* Header */}
       <div className="mb-10">
-        {meta.context && (
-          <p className="font-sans text-xs text-muted uppercase tracking-widest mb-3">
-            {meta.context}
-          </p>
-        )}
-        <h1 className="font-serif text-4xl text-ink mb-4">{meta.title}</h1>
-        <p className="font-sans text-lg text-muted leading-relaxed max-w-2xl mb-6">
-          {meta.summary}
-        </p>
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex items-start justify-between gap-6 mb-4">
+          <div className="flex-1">
+            {meta.context && (
+              <p className="font-sans text-xs text-muted uppercase tracking-widest mb-3">
+                {meta.context}
+              </p>
+            )}
+            <h1 className="font-serif text-4xl text-ink mb-4">{meta.title}</h1>
+            <p className="font-sans text-lg text-muted leading-relaxed max-w-2xl">
+              {meta.summary}
+            </p>
+          </div>
+          {meta.liveUrl && (
+            <a
+              href={meta.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 bg-burgundy text-paper text-sm font-sans font-medium rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap mt-1"
+            >
+              View Live Demo ↗
+            </a>
+          )}
+        </div>
+        <div className="flex flex-wrap items-center gap-3 mt-6">
           {meta.tags.map((tag: string) => (
             <Tag key={tag} label={tag} />
           ))}
