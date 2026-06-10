@@ -1,0 +1,53 @@
+<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Background -->
+  <rect width="400" height="280" fill="#F7ECEE"/>
+
+  <!-- Left wheat stalk -->
+  <line x1="60" y1="240" x2="60" y2="100" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="60" cy="88" rx="8" ry="14" fill="none" stroke="#8B1A2B" stroke-width="1.5" transform="rotate(-12 60 88)"/>
+  <ellipse cx="50" cy="108" rx="7" ry="12" fill="none" stroke="#8B1A2B" stroke-width="1.5" transform="rotate(-25 50 108)"/>
+  <ellipse cx="70" cy="115" rx="7" ry="12" fill="none" stroke="#8B1A2B" stroke-width="1.5" transform="rotate(20 70 115)"/>
+  <ellipse cx="52" cy="130" rx="6" ry="11" fill="none" stroke="#8B1A2B" stroke-width="1.5" transform="rotate(-30 52 130)"/>
+  <ellipse cx="68" cy="138" rx="6" ry="11" fill="none" stroke="#8B1A2B" stroke-width="1.5" transform="rotate(25 68 138)"/>
+
+  <!-- Right wheat stalk -->
+  <line x1="340" y1="240" x2="340" y2="100" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="340" cy="88" rx="8" ry="14" fill="none" stroke="#8B1A2B" stroke-width="1.5" transform="rotate(12 340 88)"/>
+  <ellipse cx="330" cy="108" rx="7" ry="12" fill="none" stroke="#8B1A2B" stroke-width="1.5" transform="rotate(-20 330 108)"/>
+  <ellipse cx="350" cy="115" rx="7" ry="12" fill="none" stroke="#8B1A2B" stroke-width="1.5" transform="rotate(25 350 115)"/>
+  <ellipse cx="332" cy="130" rx="6" ry="11" fill="none" stroke="#8B1A2B" stroke-width="1.5" transform="rotate(-25 332 130)"/>
+  <ellipse cx="348" cy="138" rx="6" ry="11" fill="none" stroke="#8B1A2B" stroke-width="1.5" transform="rotate(30 348 138)"/>
+
+  <!-- Central leaf / organic emblem -->
+  <circle cx="200" cy="135" r="62" fill="none" stroke="#8B1A2B" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <!-- Big leaf -->
+  <path d="M200 80 C220 95 230 115 200 140 C170 115 180 95 200 80Z" fill="none" stroke="#2D6A3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="200" y1="80" x2="200" y2="140" stroke="#2D6A3F" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="200" y1="100" x2="210" y2="108" stroke="#2D6A3F" stroke-width="1" stroke-linecap="round"/>
+  <line x1="200" y1="100" x2="190" y2="108" stroke="#2D6A3F" stroke-width="1" stroke-linecap="round"/>
+  <line x1="200" y1="115" x2="213" y2="123" stroke="#2D6A3F" stroke-width="1" stroke-linecap="round"/>
+  <line x1="200" y1="115" x2="187" y2="123" stroke="#2D6A3F" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Carrot bottom left of circle -->
+  <path d="M152 168 C150 155 158 150 162 165Z" fill="none" stroke="#C46A00" stroke-width="2" stroke-linecap="round"/>
+  <line x1="157" y1="150" x2="155" y2="143" stroke="#2D6A3F" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="160" y1="149" x2="160" y2="141" stroke="#2D6A3F" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="163" y1="150" x2="166" y2="142" stroke="#2D6A3F" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Apple bottom right of circle -->
+  <path d="M248 162 C244 152 252 145 258 152 C264 145 272 152 268 162 C264 172 252 174 248 162Z" fill="none" stroke="#8B1A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="258" y1="145" x2="260" y2="138" stroke="#2D6A3F" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M260 138 C263 134 268 135 267 139" fill="none" stroke="#2D6A3F" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Small sparkle dots around -->
+  <circle cx="135" cy="100" r="3" fill="#8B1A2B" opacity="0.5"/>
+  <circle cx="268" cy="95" r="2.5" fill="#8B1A2B" opacity="0.4"/>
+  <circle cx="148" cy="195" r="2" fill="#2D6A3F" opacity="0.5"/>
+  <circle cx="255" cy="200" r="2.5" fill="#2D6A3F" opacity="0.4"/>
+
+  <!-- ECO text bottom -->
+  <text x="200" y="218" font-family="Georgia, serif" font-size="13" font-weight="600" fill="#8B1A2B" text-anchor="middle" letter-spacing="6">ECO · ORGANIC</text>
+
+  <!-- Ground line -->
+  <line x1="80" y1="240" x2="320" y2="240" stroke="#8B1A2B" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+</svg>

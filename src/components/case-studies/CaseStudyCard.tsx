@@ -13,9 +13,9 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
       href={`/case-studies/${study.slug}`}
       className="flex flex-col sm:flex-row bg-white border border-ink/10 rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-200 group"
     >
-      {/* Thumbnail */}
-      {study.previewImage && (
-        <div className="sm:w-64 sm:flex-shrink-0 h-48 sm:h-auto relative overflow-hidden bg-ink/5">
+      {/* Thumbnail — always rendered so all cards have the same layout */}
+      <div className="sm:w-56 sm:flex-shrink-0 h-44 sm:h-auto relative overflow-hidden bg-blush">
+        {study.previewImage ? (
           <Image
             src={study.previewImage}
             alt={study.title}
@@ -23,8 +23,15 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
             unoptimized={study.previewImage.endsWith(".svg")}
             className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
           />
-        </div>
-      )}
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <svg className="w-12 h-12 text-ink/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+          </div>
+        )}
+      </div>
 
       {/* Content */}
       <div className="p-6 flex flex-col justify-between flex-1">
