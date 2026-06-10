@@ -34,4 +34,5 @@ export interface CaseStudyMeta {
   context?: string;
   pdfUrl?: string;
   liveUrl?: string;
+  liveUrlLabel?: string;
 }

@@ -110,7 +110,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               rel="noopener noreferrer"
               className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 bg-burgundy text-paper text-sm font-sans font-medium rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap mt-1"
             >
-              View Live Demo ↗
+              {meta.liveUrlLabel ?? "View Live Demo ↗"}
             </a>
           )}
         </div>
