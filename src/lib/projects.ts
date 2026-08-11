@@ -43,7 +43,7 @@ export const projects: Project[] = [
     id: "hr-attrition-ml",
     title: "HR Attrition Prediction",
     description:
-      "ML pipeline to predict which employees are at risk of leaving, using the IBM HR Analytics dataset. Achieved AUC 0.86 using LightGBM with behavioural feature engineering — estimated $8–12M in potential annual HR cost savings.",
+      "ML pipeline to predict which employees are at risk of leaving, using the IBM HR Analytics dataset. Achieved AUC 0.86 using LightGBM with behavioural feature engineering.",
     tags: ["Machine Learning", "Python", "LightGBM"],
     status: "live",
     liveUrl: "https://github.com/ojhamedha23-code/hr-attrition-prediction",

@@ -25,8 +25,8 @@ const entries = [
   },
   {
     period: "2024 – 2025",
-    title: "Product Manager · Adya AI",
-    body: "Built a Voice AI product from zero to one. Shipped to 15+ enterprise clients, converted 4 to paying pilots. The clearest proof that I can take something from idea to market.",
+    title: "AI Product Manager · Adya AI",
+    body: "Built a Voice AI product from zero to one. Pitched to 15+ enterprise prospects, converted 4 into paying pilots. The clearest proof that I can take something from idea to market.",
     current: false,
   },
   {

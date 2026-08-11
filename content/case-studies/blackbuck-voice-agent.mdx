@@ -12,7 +12,7 @@ context: "Personal Project · Voice AI · Case Study"
 
 India has roughly 35 lakh trucks on the road. An estimated **30–40% of truck kilometres are driven empty** — particularly on the return leg after a delivery drop-off. Every empty kilometre is dead cost for the driver and lost revenue for the marketplace.
 
-I focused this on a leading Indian logistics marketplace — one of the country's largest digital trucking platforms, connecting shippers with truck owners and fleet operators at scale.
+I focused this on BlackBuck — one of India's largest digital trucking platforms, connecting shippers with truck owners and fleet operators at scale.
 
 The gap: after a truck completes a delivery, it goes dark. The driver is tired, at an unfamiliar location, often without reliable internet, making a quick commercial decision about where to head next. The platform's matching engine may have a perfect return-leg load ready — but reaching the driver in time, in his language, on a channel he actually picks up is the hard part. Driver communication at this company still runs on traditional telephony, with no AI voice layer in place.
 
@@ -22,7 +22,7 @@ Drivers pick up calls. App engagement post-delivery is low — they're exhausted
 
 The decision the agent needed to capture was also **bounded and clear**: book the load, counter-offer, or decline. Not an open-ended support conversation — a structured commercial exchange with a specific outcome. That's exactly the kind of call voice AI handles well.
 
-At the scale this company operates, a human calling center can't reach every driver after every drop. An AI agent can.
+At the scale BlackBuck operates, a human calling center can't reach every driver after every drop. An AI agent can.
 
 ## What I Built
 
@@ -71,7 +71,5 @@ I hardcoded one scenario for testing: driver Rajesh, vehicle BB-7821, Delhi→Ch
 **Audio-level diagnostics.** I caught TTS truncation only by listening to recordings manually. Automated flags for truncation events, silence gaps, and low STT confidence should surface as filterable columns in the call log — not things you discover by ear at scale.
 
 ## Evidence
-
-A voice recording of the agent in action — the full load pitch, driver Q&A in Hindi/Hinglish, and booking confirmation — will be linked here shortly.
 
 The full case study, including agent design, demo scenario, and platform gap analysis, is on [GitHub](https://github.com/ojhamedha23-code/blackbuck-voice-agent-teardown).
